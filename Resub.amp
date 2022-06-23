@@ -1,1 +1,64 @@
-123
+<script type="javascript" runat="server">
+    Platform.Load("core","1"); 
+    var ip = Platform.Request.ClientIP();
+    // Write("Your IP: " + ip);
+    Variable.SetValue("@ip",ip)
+</script>
+%%[
+
+/*IF indexOf(@ip,".") > 0 THEN*/
+
+ SET @newSubs = LookUpRows('Resubscription','Active','true')
+ 
+ FOR @i = 1 TO RowCount(@newSubs) DO
+  /* Get Data */
+  SET @row = Row(@newSubs,@i)
+  SET @sk = FIELD(@row,"SubscriberKey")
+  SET @lu = FIELD(@row,"CreatedDate")
+  SET @email = FIELD(@row , "Email")
+  
+  
+    /* Set Subscriber Status to Active 
+
+  SET @Subscriber = CreateObject("Subscriber")
+  SetObjectProperty(@Subscriber, "SubscriberKey",@sk)
+  SetObjectProperty(@Subscriber, "EmailAddress", @email)
+  SetObjectProperty(@Subscriber, "Status", "Active" )
+  SET @status = InvokeUpdate(@Subscriber, @createErrDesc, @createErrNo, @createOpts)
+
+    SET @ll_sub = CreateObject("Subscriber")
+
+    SetObjectProperty(@ll_sub,"EmailAddress", @email)
+    SetObjectProperty(@ll_sub,"SubscriberKey", @sk)
+
+    SET @client = CreateObject("ClientID")
+    SetObjectProperty(@client, "ID", "515011413") /* 7200736 7331165 
+    SetObjectProperty(@client, "IDSpecified", "true")
+    SetObjectProperty(@ll_sub, "Client", @client)
+
+    SetObjectProperty(@ll_sub,"Status", "Active")
+    Set @options = CreateObject("UpdateOptions")
+    Set @save = CreateObject("SaveOption")
+    SetObjectProperty(@save,"SaveAction","UpdateOnly")
+    SetObjectProperty(@save,"PropertyName","Status")
+    AddObjectArrayItem(@options,"SaveOptions", @save)
+
+
+    Set @status = InvokeUpdate(@ll_sub, @update_sub_status, @update_sub_errorcode, @options)
+    output(concat("Status: ", @status,"<br>"))*/
+
+    /* Save Logs */
+
+    /* SET @log = InsertDE("ent.Resubscribes Log","SubscriberKey",@sk,"LastUpdate",@lu,"ResubDate",NOW(),"Status",@status,"StatusMessage",@update_sub_status,"BU",memberid)
+ */ 
+ 
+ NEXT @i
+ 
+/*ELSE*/
+
+]%%NO ACCESS%%[
+
+ 
+/*ENDIF*/
+
+]%%
