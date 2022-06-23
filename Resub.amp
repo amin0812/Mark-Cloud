@@ -14,7 +14,7 @@
   /* Get Data */
   SET @row = Row(@newSubs,@i)
   SET @sk = FIELD(@row,"SubscriberKey")
-  SET @lu = FIELD(@row,"EventDate")
+  SET @lu = FIELD(@row,"CreateDate")
   SET @email = FIELD(@row , "Email")
   
   
