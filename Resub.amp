@@ -18,7 +18,7 @@
   SET @email = FIELD(@row , "Email")
   
   
-    /* Set Subscriber Status to Active 
+    /* Set Subscriber Status to Active */
 
   SET @Subscriber = CreateObject("Subscriber")
   SetObjectProperty(@Subscriber, "SubscriberKey",@sk)
@@ -45,7 +45,7 @@
 
 
     Set @status = InvokeUpdate(@ll_sub, @update_sub_status, @update_sub_errorcode, @options)
-    output(concat("Status: ", @status,"<br>"))*/
+    output(concat("Status: ", @status,"<br>"))
 
     /* Save Logs */
 
