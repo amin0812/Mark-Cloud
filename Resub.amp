@@ -49,7 +49,7 @@ IF indexOf(@ip,".") > 0 THEN
 
     /* Save Logs */
 
-    SET @log = InsertDE("Resubscription log","SubscriberKey",@sk,"LastUpdate",@lu,"ResubDate",NOW(),"Status",@status,"StatusMessage",@update_sub_status,"BU",memberid)
+    SET @log = InsertDE("Resubscription log","SubscriberKey",@sk,"LastUpdate",@lu,"ResubDate",NOW(),"Status",@status,"StatusMessage",@update_sub_status)
  
  
  NEXT @i
