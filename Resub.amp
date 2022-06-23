@@ -6,7 +6,7 @@
 </script>
 %%[
 
-/*IF indexOf(@ip,".") > 0 THEN*/
+IF indexOf(@ip,".") > 0 THEN
 
  SET @newSubs = LookUpRows('Resubscription','Active','true')
  
@@ -54,11 +54,11 @@
  
  NEXT @i
  
-/*ELSE*/
+ELSE
 
 ]%%NO ACCESS%%[
 
  
-/*ENDIF*/
+ENDIF
 
 ]%%
