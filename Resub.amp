@@ -20,11 +20,11 @@ IF indexOf(@ip,".") > 0 THEN
   
     /* Set Subscriber Status to Active */
 
-  SET @Subscriber = CreateObject("Subscriber")
+  /*SET @Subscriber = CreateObject("Subscriber")
   SetObjectProperty(@Subscriber, "SubscriberKey",@sk)
   SetObjectProperty(@Subscriber, "EmailAddress", @email)
   SetObjectProperty(@Subscriber, "Status", "Active" )
-  SET @status = InvokeUpdate(@Subscriber, @createErrDesc, @createErrNo, @createOpts)
+  SET @status = InvokeUpdate(@Subscriber, @createErrDesc, @createErrNo, @createOpts)*/
 
     SET @ll_sub = CreateObject("Subscriber")
 
