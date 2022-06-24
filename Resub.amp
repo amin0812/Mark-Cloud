@@ -47,11 +47,11 @@ IF indexOf(@ip,".") > 0 THEN
     Set @status = InvokeUpdate(@ll_sub, @update_sub_status, @update_sub_errorcode, @options)
     output(concat("Status: ", @status,"<br>"))
 
-    /* Save Logs 
+    /* Save Logs */
 
     var @log
 
-    SET @log = InsertDE("Resubscription log", "SubscriberKey", @sk ,"LastUpdate",@lu,"ResubDate", NOW() ,"Status",@status,"StatusMessage",@update_sub_status) */
+    SET @log = InsertDE("Resubscription log", "SubscriberKey", @sk ,"LastUpdate",@lu,"ResubDate", NOW() ,"Status",@status,"StatusMessage",@update_sub_status) 
 
     
  
@@ -66,12 +66,6 @@ ELSE
 ENDIF
 
 ]%%
-
-currentTime: %%=v(@sk)=%%
-currentTime: %%=v(@lu)=%%
-currentTime: %%=v(NOW())=%%
-currentTime: %%=v(@status)=%%
-currentTime: %%=v(@update_sub_status)=%%
 
 
 
