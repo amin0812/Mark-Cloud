@@ -47,7 +47,7 @@ IF indexOf(@ip,".") > 0 THEN
     Set @status = InvokeUpdate(@ll_sub, @update_sub_status, @update_sub_errorcode, @options)
     output(concat("Status: ", @status,"<br>"))
 
-    /* Save Logs */
+    /* Save Logs 
 
     var @log
 
@@ -66,5 +66,13 @@ ELSE
 ENDIF
 
 ]%%
+
+currentTime: %%=v(@sk)=%%
+currentTime: %%=v(@lu)=%%
+currentTime: %%=v(NOW())=%%
+currentTime: %%=v(@status)=%%
+currentTime: %%=v(@update_sub_status)=%%
+
+
 
 
