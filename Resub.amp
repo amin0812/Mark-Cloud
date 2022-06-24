@@ -61,7 +61,6 @@ IF indexOf(@ip,".") > 0 THEN
 ELSE
 
 ]%%NO ACCESS%%[
-
  
 ENDIF
 
