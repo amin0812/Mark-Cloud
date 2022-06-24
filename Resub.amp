@@ -49,7 +49,9 @@ IF indexOf(@ip,".") > 0 THEN
 
     /* Save Logs */
 
-    SET @log = InsertDE("Resubscription log","SubscriberKey",@sk,"LastUpdate",@lu,"ResubDate",NOW(),"Status",@status,"StatusMessage",@update_sub_status)
+      /* SET @log = InsertDE("Resubscription log", "SubscriberKey", @sk ,"LastUpdate",@lu,"ResubDate", NOW() ,"Status",@status,"StatusMessage",@update_sub_status) */
+
+    set @currentTime  = Now()
  
  
  NEXT @i
@@ -62,3 +64,5 @@ ELSE
 ENDIF
 
 ]%%
+
+currentTime: %%=v(@currentTime)=%%
