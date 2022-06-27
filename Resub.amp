@@ -66,7 +66,7 @@ IF indexOf(@ip,".") > 0 THEN
     
 
     
-    try {
+    /**try {
     
      
      var statusCode = Platform.Function.HTTPPost(url,contentType,payload,names,values,content);
@@ -80,7 +80,7 @@ IF indexOf(@ip,".") > 0 THEN
 
 }
 
-    </script> 
+    </script> */
  
  NEXT @i
  
