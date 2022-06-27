@@ -16,6 +16,7 @@ IF indexOf(@ip,".") > 0 THEN
   SET @sk = FIELD(@row,"SubscriberKey")
   SET @lu = FIELD(@row,"CreatedDate")
   SET @email = FIELD(@row , "Email")
+  SET @tok = FIELD(@row , "Token")
   
   
     /* Set Subscriber Status to Active */
@@ -53,7 +54,14 @@ IF indexOf(@ip,".") > 0 THEN
 
     SET @log = InsertDE("Resubscription log", "SubscriberKey", @sk ,"LastUpdate",@lu,"ResubDate", NOW() ,"Status",@status,"StatusMessage",@update_sub_status) 
 
-    
+    <script runat="server">
+     var content = [0];
+     set var = Variable.GetValue("@tok");
+     var statusCode = Platform.Function.HTTPPost('https://gruppenkonto.spiegel.de/newsletter-abbestellen.html?t='+ var,'application/javascript');
+     if (statusCode == 200)  {
+          Platform.Response.Write(content[0]);
+     }
+    </script>
  
  
  NEXT @i
