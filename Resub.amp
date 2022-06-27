@@ -68,7 +68,7 @@ IF (1==1) THEN
     
 
     
-    /**try {
+    try {
     
      
      var statusCode = Platform.Function.HTTPPost(url,contentType,payload,names,values,content);
@@ -81,7 +81,7 @@ IF (1==1) THEN
   Write("<br>e: " + Stringify(e));
 
 }
-*/
+
 
     </script> 
 %%[ 
