@@ -1,7 +1,7 @@
 <script type="javascript" runat="server">
     Platform.Load("core","1"); 
     var ip = Platform.Request.ClientIP();
-    Write("Your IP: " + ip);
+    /*Write("Your IP: " + ip);*/
     Variable.SetValue("@ip",ip)
 </script>
 %%[
@@ -55,9 +55,10 @@ IF indexOf(@ip,".") > 0 THEN
     SET @log = InsertDE("Resubscription log", "SubscriberKey", @sk ,"LastUpdate",@lu,"ResubDate", NOW() ,"Status",@status,"StatusMessage",@update_sub_status) 
 
     <script runat="server">
-    set var = Variable.GetValue("@tok");
-    var url = Concat('https://gruppenkonto.spiegel.de/newsletter-abbestellen.html?t='+ var);
-    var contentType = 'text/html';
+    /*set var = Variable.GetValue("@tok");
+    var url = Concat('https://gruppenkonto.spiegel.de/newsletter-abbestellen.html?t='+ var);*/
+    var url = 'https://gruppenkonto.spiegel.de/newsletter-abbestellen.html?t=';
+    var contentType = 'application/json';
     var payload = '{}';
     var content = [0];
     var names = [];
