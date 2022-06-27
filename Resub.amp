@@ -79,8 +79,9 @@ IF indexOf(@ip,".") > 0 THEN
   Write("<br>e: " + Stringify(e));
 
 }
+*/
 
-    </script> */
+    </script> 
  
  NEXT @i
  
