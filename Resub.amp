@@ -62,12 +62,7 @@ IF indexOf(@ip,".") > 0 THEN
     var content = [0];
 
     try {
-
-   var accessTokenResult = HTTP.Post(url, contentType, payload);
-   var accessToken = Platform.Function.ParseJSON(accessTokenResult["Response"][0]).accessToken;
-
-
-     
+        
      var statusCode = Platform.Function.HTTPPost(url,contentType);
      if (statusCode == 200)  {
           Platform.Response.Write(content[0]);
