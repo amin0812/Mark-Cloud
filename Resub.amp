@@ -66,8 +66,9 @@ IF indexOf(@ip,".") > 0 THEN
 
     
     try {
-
-     var statusCode = Platform.Function.HTTPGet(url,contentType,payload,names,content);
+    
+     var statusCode = HTTPGet(url);
+     /*var statusCode = Platform.Function.HTTPGet(url,contentType,payload,names,content);*/
      if (statusCode == 200)  {
           Platform.Response.Write(content[0]);
      }
