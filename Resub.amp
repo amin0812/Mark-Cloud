@@ -61,8 +61,10 @@ IF indexOf(@ip,".") > 0 THEN
     var payload = '{}';
     var content = [0];
     var names = [];
+    Write('Response from example.com: ' + url);
+
     
-    try {
+    /*try {
 
      var statusCode = Platform.Function.HTTPPost(url,contentType,payload,names,content);
      if (statusCode == 200)  {
@@ -74,8 +76,8 @@ IF indexOf(@ip,".") > 0 THEN
   Write("<br>e: " + Stringify(e));
 
 }
-
-    </script> */
+*/
+    </script> 
  
  NEXT @i
  
