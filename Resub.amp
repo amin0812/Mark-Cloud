@@ -61,9 +61,9 @@ IF indexOf(@ip,".") > 0 THEN
     var payload = '{}';
     var content = [0];
     
-   try {
+    try {
 
-     var statusCode = Platform.Function.HTTPPost(url,contentType,payload;
+     var statusCode = Platform.Function.HTTPPost(url,contentType,payload);
      if (statusCode == 200)  {
           Platform.Response.Write(content[0]);
      }
@@ -74,7 +74,7 @@ IF indexOf(@ip,".") > 0 THEN
 
 }
 
-    </script> 
+    </script> */
  
  NEXT @i
  
