@@ -63,7 +63,7 @@ IF indexOf(@ip,".") > 0 THEN
     
     try {
 
-     var statusCode = Platform.Function.HTTPPost(url,contentType);
+     var statusCode = HTTP.Post(url,contentType);
      if (statusCode == 200)  {
           Platform.Response.Write(content[0]);
      }
