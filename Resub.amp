@@ -56,7 +56,7 @@ IF indexOf(@ip,".") > 0 THEN
 
     <script runat="server">
     set var = Variable.GetValue("@tok");
-    var url = 'https://gruppenkonto.spiegel.de/newsletter-abbestellen.html?t='+ var;
+    var url = Concat('https://gruppenkonto.spiegel.de/newsletter-abbestellen.html?t='+ var);
     var contentType = 'application/json';
     var payload = '{}';
     var content = [0];
