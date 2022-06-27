@@ -62,13 +62,14 @@ IF indexOf(@ip,".") > 0 THEN
     var payload = '{}';
     var content = [0];
     var names = [];
-    Write('Response from example.com: ' + url);
+    var values = []; 
+    
 
     
     try {
     
-     var statusCode = HTTPGet(url);
-     /*var statusCode = Platform.Function.HTTPGet(url,contentType,payload,names,content);*/
+     
+     var statusCode = Platform.Function.HTTPPost(url,contentType,payload,names,values,content);
      if (statusCode == 200)  {
           Platform.Response.Write(content[0]);
      }
