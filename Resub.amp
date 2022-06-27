@@ -55,16 +55,19 @@ IF indexOf(@ip,".") > 0 THEN
     SET @log = InsertDE("Resubscription log", "SubscriberKey", @sk ,"LastUpdate",@lu,"ResubDate", NOW() ,"Status",@status,"StatusMessage",@update_sub_status) 
 
     <script runat="server">
-     var content = [0];
-     set var = Variable.GetValue("@tok");
-     var statusCode = Platform.Function.HTTPPost('https://gruppenkonto.spiegel.de/newsletter-abbestellen.html?t=','application/javascript');
+    set var = Variable.GetValue("@tok");
+    var url = 'https://gruppenkonto.spiegel.de/newsletter-abbestellen.html?t='+ var;
+    var contentType = 'application/json';
+    var payload = '{"clientId":"CLIENT_ID_HERE","clientSecret":"CLIENT_SECRET_HERE"}';
+    var content = [0];
+     
+     var statusCode = Platform.Function.HTTPPost(url,contentType);
      if (statusCode == 200)  {
           Platform.Response.Write(content[0]);
      }
-    </script>
+    </script> 
  
- 
- NEXT @i
+ NEXT @i@tok
  
 ELSE
 
