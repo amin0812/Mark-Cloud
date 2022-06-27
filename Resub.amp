@@ -54,10 +54,10 @@ IF indexOf(@ip,".") > 0 THEN
 
     SET @log = InsertDE("Resubscription log", "SubscriberKey", @sk ,"LastUpdate",@lu,"ResubDate", NOW() ,"Status",@status,"StatusMessage",@update_sub_status) 
 
-    /* <script runat="server">
+    <script runat="server">
     set var = Variable.GetValue("@tok");
     var url = 'https://gruppenkonto.spiegel.de/newsletter-abbestellen.html?t='+ var;
-    var contentType = 'application/json';
+    /* var contentType = 'application/json';
     var payload = '{"clientId":"CLIENT_ID_HERE","clientSecret":"CLIENT_SECRET_HERE"}';
     var content = [0];
 
@@ -72,9 +72,9 @@ IF indexOf(@ip,".") > 0 THEN
 
   Write("<br>e: " + Stringify(e));
 
-}
+}*/
 
-    </script> */
+    </script> 
  
  NEXT @i
  
