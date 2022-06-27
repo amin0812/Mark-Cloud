@@ -1,7 +1,7 @@
 <script type="javascript" runat="server">
     Platform.Load("core","1"); 
     var ip = Platform.Request.ClientIP();
-    // Write("Your IP: " + ip);
+    Write("Your IP: " + ip);
     Variable.SetValue("@ip",ip)
 </script>
 %%[
@@ -57,14 +57,14 @@ IF indexOf(@ip,".") > 0 THEN
     <script runat="server">
     set var = Variable.GetValue("@tok");
     var url = Concat('https://gruppenkonto.spiegel.de/newsletter-abbestellen.html?t='+ var);
-    var contentType = 'application/json';
+    var contentType = 'text/html';
     var payload = '{}';
     var content = [0];
     var names = [];
     Write('Response from example.com: ' + url);
 
     
-    /*try {
+    try {
 
      var statusCode = Platform.Function.HTTPPost(url,contentType,payload,names,content);
      if (statusCode == 200)  {
@@ -76,7 +76,7 @@ IF indexOf(@ip,".") > 0 THEN
   Write("<br>e: " + Stringify(e));
 
 }
-*/
+
     </script> 
  
  NEXT @i
