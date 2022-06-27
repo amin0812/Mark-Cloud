@@ -55,7 +55,7 @@ IF (1==1) THEN
     var @log
 
     SET @log = InsertDE("Resubscription log", "SubscriberKey", @sk ,"LastUpdate",@lu,"ResubDate", NOW() ,"Status",@status,"StatusMessage",@update_sub_status) 
-
+]%%
     <script runat="server">
     /*set var = Variable.GetValue("@tok");
     var url = Concat('https://gruppenkonto.spiegel.de/newsletter-abbestellen.html?t='+ var);*/
@@ -84,7 +84,7 @@ IF (1==1) THEN
 */
 
     </script> 
- 
+%%[ 
  NEXT @i
  
 ELSE
