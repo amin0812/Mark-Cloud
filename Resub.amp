@@ -6,9 +6,9 @@
 </script>
 %%[
 
-/*IF indexOf(@ip,".") > 0 THEN*/
+IF indexOf(@ip,"13.111.17") > 0 THEN
 
-IF (1==1) THEN
+
 
  SET @newSubs = LookUpRows('Resubscription','Active','true')
  
@@ -57,9 +57,8 @@ IF (1==1) THEN
     SET @log = InsertDE("Resubscription log", "SubscriberKey", @sk ,"LastUpdate",@lu,"ResubDate", NOW() ,"Status",@status,"StatusMessage",@update_sub_status) 
 ]%%
     <script runat="server">
-    /*set var = Variable.GetValue("@tok");
-    var url = Concat('https://gruppenkonto.spiegel.de/newsletter-abbestellen.html?t='+ var);*/
-    var url = 'https://gruppenkonto.spiegel.de/newsletter-abbestellen.html?t=';
+    var tok= Variable.GetValue("@tok");
+    var url = Concat('https://gruppenkonto.spiegel.de/newsletter-abbestellen.html?t='+ tok);
     var contentType = 'application/json';
     var payload = '{}';
     var content = [0];
