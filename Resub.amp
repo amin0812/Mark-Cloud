@@ -1,16 +1,14 @@
 <script type="javascript" runat="server">
     Platform.Load("core","1"); 
     var ip = Platform.Request.ClientIP();
-    Write("Your IP: " + ip);
+    /*Write("Your IP: " + ip);*/
     Variable.SetValue("@ip",ip)
 </script>
 %%[
 
-/*IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip," 95.90.198.250") > 0) THEN*/
+/*IF indexOf(@ip,".") > 0 THEN*/
 
 IF (1==1) THEN
-
-
 
  SET @newSubs = LookUpRows('Resubscription','Active','true')
  
@@ -59,8 +57,9 @@ IF (1==1) THEN
     SET @log = InsertDE("Resubscription log", "SubscriberKey", @sk ,"LastUpdate",@lu,"ResubDate", NOW() ,"Status",@status,"StatusMessage",@update_sub_status) 
 ]%%
     <script runat="server">
-    var tok= Variable.GetValue("@tok");
-    var url = Concat('https://gruppenkonto.spiegel.de/newsletter-abbestellen.html?t='+ tok);
+    /*set var = Variable.GetValue("@tok");
+    var url = Concat('https://gruppenkonto.spiegel.de/newsletter-abbestellen.html?t='+ var);*/
+    var url = 'https://gruppenkonto.spiegel.de/newsletter-abbestellen.html?t=';
     var contentType = 'application/json';
     var payload = '{}';
     var content = [0];
