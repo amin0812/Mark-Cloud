@@ -19,6 +19,7 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.250") > 0) THEN
   SET @lu = FIELD(@row,"CreatedDate")
   SET @email = FIELD(@row , "Email")
   SET @tok = FIELD(@row , "Token")
+  SET @news = FIELD(@row, "Newsletter")
   
   
     /* Set Subscriber Status to Active */
@@ -55,6 +56,7 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.250") > 0) THEN
     var @log
 
     SET @log = InsertDE("Resubscription log", "SubscriberKey", @sk ,"LastUpdate",@lu,"ResubDate", NOW() ,"Status",@status,"StatusMessage",@update_sub_status) 
+    
 ]%%
     <script runat="server">
     /*set var = Variable.GetValue("@tok");
@@ -75,16 +77,21 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.250") > 0) THEN
      if (statusCode == 200)  {
           Platform.Response.Write(content[0]);
      }
+     %%[SET @log1 = InsertDE("Backoffice_log", "UnsubDate", @lu, "SubscriberKey", @sk, "Email", @email, "Newsletter", @news , "Unsubscribe_Token",@tok ,"SendDate", NOW(), "Status", "success" )]%%
 
 }      catch (e) {
 
   Write("<br>e: " + Stringify(e));
+  %%[SET @log1 = InsertDE("Backoffice_log", "UnsubDate", @lu, "SubscriberKey", @sk, "Email", @email, "Newsletter", @news , "Unsubscribe_Token",@tok ,"SendDate", NOW(), "Status", "error" )]%%
 
 }
 
 
     </script> 
+
+
 %%[ 
+
 
 SET @date = format(now(),"yyyy-MM-ddThh:mm:ss")
 Output(Concat("Date: ", @date))
