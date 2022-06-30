@@ -1,7 +1,7 @@
 <script type="javascript" runat="server">
     Platform.Load("core","1"); 
     var ip = Platform.Request.ClientIP();
-    /*Write("Your IP: " + ip);*/
+    Write("Your IP: " + ip);
     Variable.SetValue("@ip",ip)
 </script>
 %%[
