@@ -6,9 +6,9 @@
 </script>
 %%[
 
-/*IF indexOf(@ip,".") > 0 THEN*/
+IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"13.111.17") > 0) THEN
 
-IF (1==1) THEN
+
 
  SET @newSubs = LookUpRows('Resubscription','Active','true')
  
