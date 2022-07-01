@@ -104,7 +104,6 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.250") > 0) THEN
 
   Write("<br>e: " + Stringify(e));
   //%%[SET @log1 = InsertDE('Backoffice_log', 'UnsubDate', @lu, 'SubscriberKey', @sk, 'Email', @email, 'Newsletter', @news , 'Unsubscribe_Token', @tok ,'SendDate', NOW(), 'Response', ' ', 'Status', 'error' )]%%//
-  var status = "success"; 
   var Backoffice_log = DataExtension.Init("Backoffice_log");
   Backoffice_log.Rows.Add({UnsubDate:lu, SubscriberKey:sk, Email:email, Newsletter: Newsletter, Unsubscribe_Token : tok, SendDate : now , Response : " " , Status : status});
 
