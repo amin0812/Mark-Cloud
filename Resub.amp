@@ -92,9 +92,9 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.250") > 0) THEN
      if (statusCode == 200)  {
           Platform.Response.Write(content[0]);
      }
-     //var status = "success"; //
-     //var Backoffice_log = DataExtension.Init("Backoffice_log");//
-     Backoffice_log.Rows.Add(arrContacts);
+     /*var status = "success"; 
+     var Backoffice_log = DataExtension.Init("Backoffice_log");
+     Backoffice_log.Rows.Add(arrContacts);*/
 
 
    //%%[SET @log1 = InsertDE('Backoffice_log', 'UnsubDate', @lu, 'SubscriberKey', @sk, 'Email', @email, 'Newsletter', @news , 'Unsubscribe_Token', @tok ,'SendDate', NOW(), 'Response', ' ', 'Status', 'success' )]%%//
@@ -104,9 +104,9 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.250") > 0) THEN
 
   Write("<br>e: " + Stringify(e));
   //%%[SET @log1 = InsertDE('Backoffice_log', 'UnsubDate', @lu, 'SubscriberKey', @sk, 'Email', @email, 'Newsletter', @news , 'Unsubscribe_Token', @tok ,'SendDate', NOW(), 'Response', ' ', 'Status', 'error' )]%%//
-  //var status = "error"; //
-  //var Backoffice_log = DataExtension.Init("Backoffice_log");//
-  Backoffice_log.Rows.Add(arrContacts);
+  /*var status = "error"; //
+  //var Backoffice_log = DataExtension.Init("Backoffice_log");
+  Backoffice_log.Rows.Add(arrContacts);*/
 }
 
 
