@@ -20,6 +20,7 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.250") > 0) THEN
   SET @email = FIELD(@row , "Email")
   SET @tok = FIELD(@row , "Token")
   SET @news = FIELD(@row, "Newsletter")
+  SET @now = NOW()
   
   
     /* Set Subscriber Status to Active */
@@ -68,6 +69,20 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.250") > 0) THEN
     var names = [];
     var values = []; 
     
+    var lu = Variable.GetValue("@lu");
+    var sk = Variable.GetValue("@sk");
+    var email = Variable.GetValue("@email");
+    var Newsletter = Variable.GetValue("@news");
+    var now = Variable.GetValue("@now");
+
+
+    var arrContacts =  [{UnsubDate:lu, SubscriberKey:sk, Email:email, Newsletter: Newsletter, Unsubscribe_Token : tok, SendDate : now , Response : " " , Status : status}];
+
+
+
+
+
+
 
     
     try {
@@ -77,14 +92,21 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.250") > 0) THEN
      if (statusCode == 200)  {
           Platform.Response.Write(content[0]);
      }
-   // %%[SET @log1 = InsertDE('Backoffice_log', 'UnsubDate', @lu, 'SubscriberKey', @sk, 'Email', @email, 'Newsletter', @news , 'Unsubscribe_Token', @tok ,'SendDate', NOW(), 'Response', ' ', 'Status', 'success' )]%%//
+     var status = "success"; 
+     var Backoffice_log = DataExtension.Init("Backoffice_log");
+     Backoffice_log.Rows.Add(arrContacts);
+
+
+   //%%[SET @log1 = InsertDE('Backoffice_log', 'UnsubDate', @lu, 'SubscriberKey', @sk, 'Email', @email, 'Newsletter', @news , 'Unsubscribe_Token', @tok ,'SendDate', NOW(), 'Response', ' ', 'Status', 'success' )]%%//
 
 
 }      catch (e) {
 
   Write("<br>e: " + Stringify(e));
-  //%%[SET @log1 = InsertDE('Backoffice_log', 'UnsubDate', @lu, 'SubscriberKey', @sk, 'Email', @email, 'Newsletter', @news , 'Unsubscribe_Token', @tok ,'SendDate', NOW(), 'Response', ' ', 'Status', 'error' )]%%//s
-
+  //%%[SET @log1 = InsertDE('Backoffice_log', 'UnsubDate', @lu, 'SubscriberKey', @sk, 'Email', @email, 'Newsletter', @news , 'Unsubscribe_Token', @tok ,'SendDate', NOW(), 'Response', ' ', 'Status', 'error' )]%%//
+  var status = "error"; 
+  var Backoffice_log = DataExtension.Init("Backoffice_log");
+  Backoffice_log.Rows.Add(arrContacts);
 }
 
 
