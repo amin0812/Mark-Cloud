@@ -104,6 +104,7 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.250") > 0) THEN
 
      else {
           var status = "error"; 
+          write( "You should have the DE updated");
           /*var Backoffice_log = DataExtension.Init("Backoffice_log");*/
           /*Backoffice_log.Rows.Add({UnsubDate:lu, SubscriberKey:sk, Email:email, Newsletter: Newsletter, Unsubscribe_Token : tok, SendDate : now , Response : " " , Status : status});*/
           var rows = Platform.Function.UpsertData("Backoffice_log",["SubscriberKey", "UnsubDate" , "Newsletter"],[sk ,lu ,Newsletter],["status"],[status]);
