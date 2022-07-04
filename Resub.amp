@@ -121,8 +121,7 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.250") > 0) THEN
 
   Write("<br>e: " + Stringify(e));
   var status = "error"; 
-  Write ("aasba");
-  //var rows = Platform.Function.UpsertData("Backoffice_log",["UnsubDate" ,"SubscriberKey", "Newsletter"],[lu ,sk ,Newsletter],["Status"],[status]);
+  var rows = Platform.Function.UpsertData("Backoffice_log",["UnsubDate" ,"SubscriberKey", "Newsletter"],[lu ,sk ,Newsletter],["Status"],[status]);
 
 
 
