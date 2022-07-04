@@ -74,6 +74,7 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.250") > 0) THEN
     var email = Variable.GetValue("@email");
     var Newsletter = Variable.GetValue("@news");
     var now = Variable.GetValue("@now");
+    var tok = Variable.GetValue("@tok");
 
 
     var arrContacts =  [{UnsubDate:lu, SubscriberKey:sk, Email:email, Newsletter: Newsletter, Unsubscribe_Token : tok, SendDate : now , Response : " " , Status : status}];
@@ -121,8 +122,7 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.250") > 0) THEN
 
   Write("<br>e: " + Stringify(e));
   var status = "error"; 
-  //var rows = Platform.Function.UpsertData("Backoffice_log",["UnsubDate" ,"SubscriberKey", "Newsletter"],[lu ,sk ,Newsletter],["Status"],[status]);
-  Write(lu + ',' + sk + ',' +Newsletter );
+  var rows = Platform.Function.UpsertData("Backoffice_log",["UnsubDate", "SubscriberKey", "Newsletter"],[lu ,sk ,Newsletter],["Email", "Unsubscribe_Token", "SendDate", "Response", "Status"],[email, tok, now , 'NA', status]);
 
 
 
