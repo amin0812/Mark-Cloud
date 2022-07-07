@@ -151,8 +151,8 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.250") > 0) THEN
 
             Set @status = InvokeUpdate(@ll_sub, @update_sub_status, @update_sub_errorcode, @options)
             output(concat("Status: ", @status,"<br>"))
-
-
+            
+          ENDIF
 
 SET @date = format(now(),"yyyy-MM-ddThh:mm:ss")
 Output(Concat("Date: ", @date))
