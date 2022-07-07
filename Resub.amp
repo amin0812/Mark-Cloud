@@ -144,29 +144,7 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.250") > 0) THEN
     
 
 
-    %%[IF @test == "okay" THEN
-
-
-    SET @ll_sub = CreateObject("Subscriber")
-
-    SetObjectProperty(@ll_sub,"EmailAddress", @email)
-    SetObjectProperty(@ll_sub,"SubscriberKey", @sk)
-
-    SET @client = CreateObject("ClientID")
-    SetObjectProperty(@client, "ID", "515011413") /* 7200736 7331165 */
-    SetObjectProperty(@client, "IDSpecified", "true")
-    SetObjectProperty(@ll_sub, "Client", @client)
-
-    SetObjectProperty(@ll_sub,"Status", "Active")
-    Set @options = CreateObject("UpdateOptions")
-    Set @save = CreateObject("SaveOption")
-    SetObjectProperty(@save,"SaveAction","UpdateOnly")
-    SetObjectProperty(@save,"PropertyName","Status")
-    AddObjectArrayItem(@options,"SaveOptions", @save)
-
-
-    Set @status = InvokeUpdate(@ll_sub, @update_sub_status, @update_sub_errorcode, @options)
-    output(concat("Status: ", @status,"<br>"))
+    %%[
     ]%%
 
 
