@@ -143,7 +143,7 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.250") > 0) THEN
 %%[ SET @Test = 'Okay']%%
 %%[ 
 
-   IF @Test == 'OKAY' DO
+   IF @Test == 'OKAY' THEN
 
 
    SET @ll_sub = CreateObject("Subscriber")
