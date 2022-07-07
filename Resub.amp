@@ -93,7 +93,7 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.250") > 0) THEN
      if (statusCode == 200)  {
           Platform.Response.Write(content[0]);
           var test= 'okay';
-          Variable.SetValue(@test,"test");
+          Variable.SetValue("@test","test");
 
           
 
