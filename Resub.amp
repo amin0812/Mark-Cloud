@@ -139,7 +139,7 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.250") > 0) THEN
 
 
 }
-          Variable.SetValue("@test","test");
+          Variable.SetValue("@test",test);
 
 
     </script> 
