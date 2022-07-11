@@ -20,6 +20,7 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.250") > 0) THEN
   SET @email = FIELD(@row , "Email")
   SET @tok = FIELD(@row , "Token")
   SET @news = FIELD(@row, "Newsletter")
+  SET @Source = FIELD(@row, "Source")
   SET @now = NOW()
   
   
@@ -42,7 +43,7 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.250") > 0) THEN
 ]%%
     <script runat="server">
     var tok = Variable.GetValue("@tok");
-    var url = ('https://gruppenkonto.spiegel.de/newsletter-abbestellen.html?t=' + tok);
+    var url = ('https://gruppenkonto.spiegel.de/newsletter-abbestellen.html?t=' + tok + 'unsubscribe_reason=');
     /*var url = 'https://gruppenkonto.spiegel.de/newsletter-abbestellen.html?t=';*/
     var contentType = 'application/json';
     var payload = '{}';
