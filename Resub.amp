@@ -43,8 +43,8 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.223") > 0) THEN
 ]%%
     <script runat="server">
     var tok = Variable.GetValue("@tok");
-    /*var url = ('https://gruppenkonto.spiegel.de/newsletter-abbestellen.html?t=' + tok + 'unsubscribe_reason='+ Source);*/
-    var url = ('https://feature-demo-bo-3582-newsletter.feature.dev.cm.spiegel.de/resources/newsletter/abmelden?token=57d9e946-b510-4195-9f45-881c7e235f1c&grund=bounce ')
+    var url = ('https://feature-demo-bo-3582-newsletter.feature.dev.cm.spiegel.de/resources/newsletter/abmelden?token=' + tok + '&grund='+ Source);
+    /*var url = ('https://feature-demo-bo-3582-newsletter.feature.dev.cm.spiegel.de/resources/newsletter/abmelden?token=57d9e946-b510-4195-9f45-881c7e235f1c&grund=bounce ')*/
     /*var url = 'https://gruppenkonto.spiegel.de/newsletter-abbestellen.html?t=';*/
     var contentType = 'application/json';
     var payload = '{}';
@@ -86,7 +86,7 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.223") > 0) THEN
 
     var respJSON = Platform.Function.ParseJSON(String(resp.content));
     var statusCode = resp.statusCode;
-    Write('Resp Content' + resp.content + 'Status Code :' + resp.statusCode + 'end');
+    Write('Resp Content' + resp.content + 'Status Code :' + resp.statusCode );
     
      if (respJSON.success == true)  {
           Platform.Response.Write('Successful');
