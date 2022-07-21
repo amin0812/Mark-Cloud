@@ -72,7 +72,22 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.223") > 0) THEN
     try {
     
      
-     var statusCode = Platform.Function.HTTPGet(url,contentType,payload,names,values,content);
+     /*var statusCode = Platform.Function.HTTPPost(url,contentType,payload,names,values,content);*/
+    var contentType = 'application/json;charSET=utf-8'; 
+
+                var req = new Script.Util.HttpRequest(url);
+                req.emptyContentHandling = 0;
+                req.retries = 2;
+                req.continueOnError = true;
+                req.contentType = contentType;
+                req.method = 'GET';     
+                var resp = req.send();
+
+
+    var respJSON = Platform.Function.ParseJSON(String(resp.content));
+    var statusCode = resp.statusCode;
+    Write('Resp Content' + resp.Content + 'Status Code :' + resp.statusCode);
+    
      if (statusCode == 200)  {
           Platform.Response.Write(content[0]);
           var test= 'okay';
