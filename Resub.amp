@@ -6,14 +6,18 @@
 </script>
 %%[
 
+/* Grant access for a certain pool of IP addresses*/
+
 IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.223") > 0) THEN
+ 
+ 
 
 
-
- SET @newSubs = LookUpRows('Unsubscribers_3h','Active','true')
+/* Loop Over Unsubscribers DE */
+  SET @newSubs = LookUpRows('Unsubscribers_3h','Active','true')
  
  FOR @i = 1 TO RowCount(@newSubs) DO
-  /* Get Data */
+  /* Get Unsubscruber's Data */
   SET @row = Row(@newSubs,@i)
   SET @sk = FIELD(@row,"SubscriberKey")
   SET @lu = FIELD(@row,"Date")
@@ -23,6 +27,12 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.223") > 0) THEN
   SET @Source = FIELD(@row, "Source")
   SET @now = NOW()
   
+
+
+
+
+
+
   
     /* Set Subscriber Status to Active */
 
@@ -37,20 +47,21 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.223") > 0) THEN
     /* Save Logs */
 
     var @log
-
     SET @log = InsertDE("Resubscription log", "SubscriberKey", @sk ,"LastUpdate",@lu,"ResubDate", NOW() ,"Status",@status,"StatusMessage",@update_sub_status) 
     
 ]%%
+
+
+
     <script runat="server">
     var tok = Variable.GetValue("@tok");
     var url = ('https://feature-demo-bo-3582-newsletter.feature.dev.cm.spiegel.de/resources/newsletter/abmelden?token=' + tok + '&grund='+ Source);
-    /*var url = ('https://feature-demo-bo-3582-newsletter.feature.dev.cm.spiegel.de/resources/newsletter/abmelden?token=57d9e946-b510-4195-9f45-881c7e235f1c&grund=bounce ')*/
-    /*var url = 'https://gruppenkonto.spiegel.de/newsletter-abbestellen.html?t=';*/
+    /*var url = ('https://feature-demo-bo-3582-newsletter.feature.dev.cm.spiegel.de/resources/newsletter/abmelden?token=57d9e946-b510-4195-9f45-881c7e235f1c&grund=bounce ')
     var contentType = 'application/json';
     var payload = '{}';
     var content = [0];
     var names = [];
-    var values = []; 
+    var values = []; */
     
     var lu = Variable.GetValue("@lu");
     var sk = Variable.GetValue("@sk");
@@ -60,7 +71,7 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.223") > 0) THEN
     var tok = Variable.GetValue("@tok");
 
 
-    var arrContacts =  [{UnsubDate:lu, SubscriberKey:sk, Email:email, Newsletter: Newsletter, Unsubscribe_Token : tok, SendDate : now , Response : " " , Status : status}];
+  /*  var arrContacts =  [{UnsubDate:lu, SubscriberKey:sk, Email:email, Newsletter: Newsletter, Unsubscribe_Token : tok, SendDate : now , Response : " " , Status : status}]; */
 
 
 
@@ -68,6 +79,7 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.223") > 0) THEN
 
 
 
+  /* Send HTTP Request to BackOffice to get the status of Unsubscription and Store it in Backoffice Log DE*/
     
     try {
     
@@ -146,7 +158,11 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.223") > 0) THEN
     
 
 
-    %%[   IF (@test == "okay" AND not empty(@test)) THEN
+
+    %%[  
+        /* Update Subscribers DE */
+        
+       IF (@test == "okay" AND not empty(@test)) THEN
 
             SET @ll_sub = CreateObject("Subscriber")
 
