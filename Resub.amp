@@ -88,8 +88,8 @@ IF (indexOf(@ip,"13.111.17") > 0 OR indexOf(@ip,"95.90.198.223") > 0) THEN
     var statusCode = resp.statusCode;
     Write('Resp Content' + resp.content + 'Status Code :' + resp.statusCode + 'end');
     
-     if (statusCode == 200)  {
-          Platform.Response.Write(content[0]);
+     if (respJSON.success == 'true')  {
+          Platform.Response.Write('Successful');
           var test= 'okay';
           Variable.SetValue("@test",test);
 
