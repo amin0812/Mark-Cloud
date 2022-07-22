@@ -1,0 +1,123 @@
+
+
+
+
+<!--
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>meinDOc</title>
+ %%=concat('<scr','ipt', ' src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">','</scr','ipt>')=%%
+ <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+  %%=concat('<scr','ipt', ' type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js">','</scr','ipt>')=%%
+%%=concat('<scr','ipt', ' type="text/javascript">$(document).ready( function () {
+    $("#table_id").DataTable();
+} );','</scr','ipt>')=%%
+</head>
+<body>
+
+<br><b>userinfo</b>
+<br>preferred_username:%%=v(@preferred_username)=%%
+<br>name: %%=v(@name)=%%
+<br>email: %%=v(@email)=%%
+<br>locale: %%=v(@locale)=%%
+<br>zoneinfo: %%=v(@zoneinfo)=%%
+<br>timezone.longName: %%=v(@timezone_longName)=%%
+<br>timezone.shortName: %%=v(@timezone_shortName)=%% 
+<br>timezone.offset: %%=v(@timezone_offset)=%%
+<br>timezone.dst: %%=v(@timezone_dst)=%%
+<br>
+<br><b>organization info</b>
+<br>member_id: %%=v(@org_member_id)=%%
+<br>enterprise_id: %%=v(@org_enterprise_id)=%%
+<br>enterprise_name: %%=v(@org_enterprise_name)=%%
+<br>account_type: %%=v(@org_account_type)=%%
+<br>stack_key: %%=v(@org_stack_key)=%%
+<br>region: %%=v(@org_region)=%%
+<br>locale: %%=v(@org_locale)=%%
+<br>zoneinfo: %%=v(@org_zoneinfo)=%%
+<br>org_timezoneLongName: %%=v(@org_timezoneLongName)=%%
+<br>org_timezoneShortName: %%=v(@org_timezoneShortName)=%%
+<br>org_timezoneOffset: %%=v(@org_timezoneOffset)=%%
+<br>org_timezoneDST: %%=v(@org_timezoneDST)=%%
+
+<br> - youre authenticated! other code can be placed here.
+
+<table id="table_id" class="display">
+    <thead>
+        <tr>
+         <th>businessUnit</th>
+            <th>Process</th>
+            <th>permissionType</th>
+            <th>sourceCategory</th>
+            <th>source</th>
+            <th>eventDefinitionKey</th>
+            <th>include this row</th>
+        </tr>
+    </thead>
+    <tbody>
+        -->
+
+
+        %%[
+  
+        var @rows, @row, @rowcount, @i
+       
+        SET @rows = LookupRows('Test_Amin', 'Test', 'true')
+       
+        SET @rowcount = rowcount(@rows)
+       
+        IF @rowcount > 0 THEN
+       
+         FOR @i = 1 to @rowcount DO
+         set @row = row(@rows, @i) /* get row based on counter */
+         set @businessUnit = field(@row,"businessUnit")
+         set @Process = field(@row,"Process")
+         set @permissionType = field(@row , "permissionType")
+         set @sourceCategory  = field(@row ,"sourceCategory")
+         set @source  = field(@row ,"source")
+         set @eventDefinitionKey = field(@row , "eventDefinitionKey")
+         set @include this row  = field(@row , "include this row")
+         ]%%
+              
+         %%[
+         NEXT @i
+        ENDIF
+        ]%%        
+             
+       
+       
+       <!--     <td>%%=v(@org_member_id)=%%</td>
+            <td data-primaryKeyOrNot="pk"><select name="process" id="process">
+            <option value="welcome">welcome</option>
+            <option value="additionalSubscribe">additionalSubscribe</option>
+            <option value="unsubscribe">unsubscribe</option>
+           </select>
+              </td>
+            <td data-primaryKeyOrNot="pk"><select name="permissionType" id="permissionType">
+            <option value="standard">standard</option>
+            <option value="club">club</option>
+            <option value="test">test</option>
+           </select></td>
+            <td data-primaryKeyOrNot="pk"><select name="sourceCategory" id="sourceCategory">
+            <option value="default">default</option>
+            <option value="website">website</option>
+           </select></td>
+            <td data-primaryKeyOrNot="pk"><select name="source" id="source">
+        <option value="default">send nothing - "default"</option>
+           <option value="MA00000001">meineErsteEmail - "MA00000001"</option>
+           </select></td>
+            <td data-primaryKeyOrNot="noPk"><input type="text"/></td>     
+            <td data-primaryKeyOrNot="noPk"><input type="checkbox"/></td>     
+           </tr>
+           </tbody> 
+       
+               
+         
+         </table>
+       
+         
+          
+       </body>
+       </html> -->
