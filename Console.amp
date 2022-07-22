@@ -26,38 +26,3 @@
  ENDIF
  ]%%        
       
-
-
-<!--     <td>%%=v(@org_member_id)=%%</td>
-     <td data-primaryKeyOrNot="pk"><select name="process" id="process">
-     <option value="welcome">welcome</option>
-     <option value="additionalSubscribe">additionalSubscribe</option>
-     <option value="unsubscribe">unsubscribe</option>
-    </select>
-       </td>
-     <td data-primaryKeyOrNot="pk"><select name="permissionType" id="permissionType">
-     <option value="standard">standard</option>
-     <option value="club">club</option>
-     <option value="test">test</option>
-    </select></td>
-     <td data-primaryKeyOrNot="pk"><select name="sourceCategory" id="sourceCategory">
-     <option value="default">default</option>å
-     <option value="website">website</option>
-    </select></td>
-     <td data-primaryKeyOrNot="pk"><select name="source" id="source">
- <option value="default">send nothing - "default"</option>
-    <option value="MA00000001">meineErsteEmail - "MA00000001"</option>
-    </select></td>
-     <td data-primaryKeyOrNot="noPk"><input type="text"/></td>     
-     <td data-primaryKeyOrNot="noPk"><input type="checkbox"/></td>     
-    </tr>
-    </tbody> 
-
-        
-  
-  </table>
-
-  
-   
-</body>
-</html> -->
