@@ -1,28 +1,8 @@
+ <html>
 
+        <h3> welcome</h3>
+        </html>
 
-  %%[
-  
- var @rows, @row, @rowcount, @i
-
- SET @rows = LookupRows('Test_Amin', 'Test', 'true')
-
- SET @rowcount = rowcount(@rows)
-
- IF @rowcount > 0 THEN
-
-  FOR @i = 1 to @rowcount DO
-  set @row = row(@rows, @i) /* get row based on counter */
-  set @businessUnit = field(@row,"businessUnit")
-  set @Process = field(@row,"Process")
-  set @permissionType = field(@row , "permissionType")
-  set @sourceCategory  = field(@row ,"sourceCategory")
-  set @source  = field(@row ,"source")
-  set @eventDefinitionKey = field(@row , "eventDefinitionKey")
-  set @include this row  = field(@row , "include this row")
-  ]%%
-       
-  %%[
-  NEXT @i
- ENDIF
- ]%%        
+             
+ 
       
