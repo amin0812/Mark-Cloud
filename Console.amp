@@ -6,9 +6,10 @@
         SET @rows = LookupRows('Test_Amin', 'Active', 'true')
        
         SET @rowcount = rowcount(@rows)
-       /*
-        IF @rowcount > 0 THEN
        
+        IF @rowcount > 0 THEN
+                Output(Concat("Number: ", @rowcount))
+       /*
          FOR @i = 1 to @rowcount DO
          set @row = row(@rows, @i) 
          set @businessUnit = field(@row,"businessUnit")
