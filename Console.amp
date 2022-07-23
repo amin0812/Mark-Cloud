@@ -23,7 +23,7 @@
          set @sourceCategory  = field(@row ,"sourceCategory")
          set @source  = field(@row ,"source")
          set @eventDefinitionKey = field(@row , "eventDefinitionKey")
-         set @include this row  = field(@row , "include this row") */
+         set @include this row  = field(@row , "include this row") 
          ]%%
               
          %%[
