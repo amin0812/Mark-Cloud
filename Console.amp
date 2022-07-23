@@ -51,16 +51,6 @@
             <td data-primaryKeyOrNot="noPk"><input type="text"/></td>     
             <td data-primaryKeyOrNot="noPk"><input type="checkbox"/></td>     
            </tr>
-           </tbody> 
-       
-               
-         
-         </table>
-       
-         
-          
-       </body>
-       </html> 
 
 
        %%[
@@ -85,10 +75,42 @@
          set @include  = field(@row , "include this row") 
          ]%%
               
-         %%[
+          
+
+
+
+
+
+           <tr>
+          <td>%%=v(@businessUnit)=%%</td>
+          <td>%%=v(@Process)=%%</td>
+          <td>%%=v(@permissionType)=%%</td>
+          <td>%%=v(@sourceCategory)=%%</td>
+          <td>%%=v(@source)=%%</td>
+          <td>%%=v(@eventDefinitionKey)=%%</td>
+          <td>%%=v(@include)=%%</td>
+          
+          
+          </tr>
+
+          %%[
          NEXT @i
         ENDIF 
-        ]%%        
-             
+        ]%%   
+           </tbody> 
+       
+               
+         
+         </table>
+       
+         
+          
+       </body>
+       </html> 
+
+
+
+
+  
  
-      
+     
