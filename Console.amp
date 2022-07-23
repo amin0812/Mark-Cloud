@@ -1,4 +1,6 @@
 
+   <html>
+   
     <table>
     <tr>
                 <th>Journey</th>
@@ -9,9 +11,9 @@
                 
             </tr>
 
-            </table>
+</table>
 
-
+</html>
        %%[
   
         var @rows, @row, @rowcount, @i
