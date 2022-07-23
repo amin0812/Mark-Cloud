@@ -22,8 +22,8 @@
          ]%%
               
          %%[
-         /*NEXT @i
-        ENDIF */
+         /*NEXT @i*/
+        ENDIF 
         ]%%        
              
  
