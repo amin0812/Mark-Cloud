@@ -12,32 +12,6 @@
 </head>
 <body>
 
-<br><b>userinfo</b>
-<br>preferred_username:%%=v(@preferred_username)=%%
-<br>name: %%=v(@name)=%%
-<br>email: %%=v(@email)=%%
-<br>locale: %%=v(@locale)=%%
-<br>zoneinfo: %%=v(@zoneinfo)=%%
-<br>timezone.longName: %%=v(@timezone_longName)=%%
-<br>timezone.shortName: %%=v(@timezone_shortName)=%% 
-<br>timezone.offset: %%=v(@timezone_offset)=%%
-<br>timezone.dst: %%=v(@timezone_dst)=%%
-<br>
-<br><b>organization info</b>
-<br>member_id: %%=v(@org_member_id)=%%
-<br>enterprise_id: %%=v(@org_enterprise_id)=%%
-<br>enterprise_name: %%=v(@org_enterprise_name)=%%
-<br>account_type: %%=v(@org_account_type)=%%
-<br>stack_key: %%=v(@org_stack_key)=%%
-<br>region: %%=v(@org_region)=%%
-<br>locale: %%=v(@org_locale)=%%
-<br>zoneinfo: %%=v(@org_zoneinfo)=%%
-<br>org_timezoneLongName: %%=v(@org_timezoneLongName)=%%
-<br>org_timezoneShortName: %%=v(@org_timezoneShortName)=%%
-<br>org_timezoneOffset: %%=v(@org_timezoneOffset)=%%
-<br>org_timezoneDST: %%=v(@org_timezoneDST)=%%
-
-<br> - youre authenticated! other code can be placed here.
 
 <table id="table_id" class="display">
     <thead>
