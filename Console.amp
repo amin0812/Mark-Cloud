@@ -14,8 +14,7 @@
         SET @rowcount = rowcount(@rows)
        
         IF @rowcount > 0 THEN
-                Output(Concat("Number: ", @rowcount))
-       /*
+         Output(Concat("Number: ", @rowcount))
          FOR @i = 1 to @rowcount DO
          set @row = row(@rows, @i) 
          set @businessUnit = field(@row,"businessUnit")
@@ -28,7 +27,7 @@
          ]%%
               
          %%[
-         /*NEXT @i*/
+         NEXT @i
         ENDIF 
         ]%%        
              
