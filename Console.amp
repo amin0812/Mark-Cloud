@@ -18,12 +18,12 @@
          
          FOR @i = 1 to @rowcount DO
          set @row = row(@rows, @i) 
-         /*set @businessUnit = field(@row,"businessUnit")
+        set @businessUnit = field(@row,"businessUnit")
          set @Process = field(@row,"Process")
          set @permissionType = field(@row , "permissionType")
          set @sourceCategory  = field(@row ,"sourceCategory")
          set @source  = field(@row ,"source")
-         set @eventDefinitionKey = field(@row , "eventDefinitionKey")
+          /*set @eventDefinitionKey = field(@row , "eventDefinitionKey")
          set @include this row  = field(@row , "include this row") */
          ]%%
               
