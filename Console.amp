@@ -1,8 +1,15 @@
 
-    <html> 
-        <h3> Hello ! </h3>
-    </html>
+    <table>
+    <tr>
+                <th>Journey</th>
+                <th>Status</th>
+                <th>Version</th>
+                <th>Last Published</th>
+                <th>Contacts</th>
+                
+            </tr>
 
+            </table>
 
 
        %%[
