@@ -111,6 +111,80 @@
 
 
 
-  
+   </table>
+    </div>
+
+    <div class="container">
+    <div id="data">
+      
+        <form id="myForm" method="post" action="https://mc2xsctbllc5pw-0ck06pnh5c6g8.pub.sfmc-content.com/rk0uniyblzb">
+            <input type="text" name="BusinessUnit" id="BusinessUnit" placeholder="Enter BusinessUnit" size="23">
+            <input type="number" name="Process" id="Process" placeholder="Enter Process" >
+            <input type="number" name="PermissionType" id="PermissionType" placeholder="Enter PermissionType">
+            <input type="text" name="SourceCategory" id="SourceCategory" placeholder="Enter SourceCategory">
+            <input type="text" name="source" id="source" placeholder="Enter source">
+            <input type="text" name="eventDefinitionKey" id="source" placeholder="Enter eventDefinitionKey">
+
+       </form>
+        </div>
+    </div>
+           
+
+
+    <div class="container">
+  <div class="row">
+    <div class="col text-center">
+       
+  <button class="btn btn-secondary btn-lg" name="submitted" id="add"> Add </button>
+    </div>
+  </div>
+  </div> 
  
      
+        <script>
+        
+let btnAdd = document.querySelector('button');
+let table = document.querySelector('table');
+
+
+
+let BusinessUnit = document.querySelector('#BusinessUnit');
+let Process = document.querySelector('#Process');
+let PermissionType = document.querySelector('#PermissionType');
+let SourceCategory = document.querySelector('#SourceCategory');
+let source = document.querySelector('#source');
+let source = document.querySelector('#eventDefinitionKey');
+
+
+btnAdd.addEventListener('click', () => {
+    let BusinessUnit = BusinessUnitInput.value;
+    let Process = ProcessInput.value;
+    let PermissionType = PermissionTypeInput.value;
+    let SourceCategory = SourceCategory.value;
+    let source =sourceInput.value;
+    let eventDefinitionKey = eventDefinitionKeyInput.value;
+    
+
+    let template = `
+                <tr>
+                    <td>${BusinessUnit}</td>
+                    <td>${Process}</td>
+                    <td>${PermissionType}</td>
+                    <td>${SourceCategory}</td>
+                    <td>${source}</td>
+                    <td>${eventDefinitionKey}</td>
+
+
+                    
+
+                </tr>`;
+
+    table.innerHTML += template;
+  
+ 
+
+
+})  ;
+
+
+    </script>
