@@ -156,8 +156,8 @@ HTTPHeader.SetValue("Access-Control-Allow-Origin","*");
       
         <form id="myForm" method="post" action="https://mc2xsctbllc5pw-0ck06pnh5c6g8.pub.sfmc-content.com/rk0uniyblzb">
             <input type="text" name="BusinessUnit" id="BusinessUnit" placeholder="Enter BusinessUnit" size="23">
-            <input type="number" name="Process" id="Process" placeholder="Enter Process" >
-            <input type="number" name="PermissionType" id="PermissionType" placeholder="Enter PermissionType">
+            <input type="text" name="Process" id="Process" placeholder="Enter Process" >
+            <input type="text" name="PermissionType" id="PermissionType" placeholder="Enter PermissionType">
             <input type="text" name="SourceCategory" id="SourceCategory" placeholder="Enter SourceCategory">
             <input type="text" name="source" id="source" placeholder="Enter source">
             <input type="text" name="eventDefinitionKey" id="source" placeholder="Enter eventDefinitionKey">
