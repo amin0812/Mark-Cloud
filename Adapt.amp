@@ -1,1 +1,687 @@
+<!DOCTYPE html>
+<html>
+<head>
 
+<!--
+<script runat="server">
+Platform.Load("core", "1");
+
+var client_id = "9rllyvuyuzgo9u5vuflil50z",        //add the client id from the installed package
+    client_secret = "ocDyThpmm2HBKFW3bqnkNEwT",    //add the client secret from the installed package
+    subdomain = "mc9xw2m4t8-hq4wwlvhx7w93y7c8",        //add the 28 character subdomain (starts with mc….xxxx)
+    redirect_uri = "https://mc9xw2m4t8-hq4wwlvhx7w93y7c8.pub.sfmc-content.com/s1y0mo0frlg";     //add the url of the CloudPage that hosts your app
+
+var auth = true;
+
+var authToken = Platform.Request.GetCookieValue("authToken");
+if (authToken == null) {
+    var authCode = Request.GetQueryStringParameter("code");
+    if (authCode == null) {
+        Platform.Response.Redirect("https://" + subdomain + ".auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id=" + client_id + "&redirect_uri=" + redirect_uri);
+    } else {
+        var url = "https://" + subdomain + ".auth.marketingcloudapis.com/v2/token"
+        var contentType = "application/json";
+        var payload = {
+            "grant_type": "authorization_code",
+            "code": authCode,
+            "client_id": client_id,
+            "client_secret": client_secret,
+            "redirect_uri": redirect_uri
+        };
+        try {
+            var accessTokenRequest = HTTP.Post(url, contentType, Stringify(payload));
+
+            if (accessTokenRequest.StatusCode == 200) {
+                var tokenResponse = Platform.Function.ParseJSON(accessTokenRequest.Response[0]);
+                var accessToken = tokenResponse.accessToken;
+                Platform.Response.SetCookie("authToken", accessToken);
+                auth = true;
+            }
+
+        } catch (error) {
+            auth = false;
+        }
+    }
+}
+</script>
+
+-->
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+
+  <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+
+  <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/mobile/bootstrap-table-mobile.min.js"></script>
+  
+ 
+  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+<script runat=server>
+Platform.Load("core","1");
+HTTPHeader.SetValue("Access-Control-Allow-Methods","POST");
+HTTPHeader.SetValue("Access-Control-Allow-Origin","*");
+</script>
+
+
+<style>
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+table {
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th {
+  cursor: pointer;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+</style>
+
+<nav class="navbar navbar-light bg-light pt-3 pb-3">
+  <div class="container-fluid">
+        <img src="persistent.jpeg" width="40" height="40" class="d-inline-block align-top rounded circle" alt="">
+    <a class="navbar-brand" href="#">
+      Persistent Systems
+    </a>
+  </div>
+</nav>
+
+</head>
+<body>
+
+
+
+    <div class="container">
+          <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Journey.." title="Type in a name">
+
+
+
+    <label for="DE-select">Data Extension</label>
+     <select name="pets" id="DE-select" onChange="update()">
+        <option value="">--Please choose a Data Extension--</option>
+
+
+
+%%[
+var @rows, @row, @rowCount, @i, @Name
+
+set @rows = LookupRows("DE_Names_Test","test", "1")
+set @rowCount = rowcount(@rows)
+
+
+if @rowCount > 0 then
+
+    for @i = 1 to @rowCount do
+
+        set @row = row(@rows,@i) 
+        set @Name = field(@row,"Name") 
+
+
+    ]%%
+
+
+               
+                    <option >%%=v(@Name)=%%</option>
+
+    %%[
+
+  next @i ]%%
+
+%%[endif]%%
+
+        </select>
+        
+  <!-- var text="";
+            function update() {
+                var select = document.getElementById('DE-select');
+                var option = select.options[select.selectedIndex];
+
+                document.getElementById('valeur').value = option.value; 
+                document.getElementById('text').value = option.text;
+                text = option.text;
+                console.log(text);
+
+
+           }
+
+            update();-->
+
+<script type="text/javascript">
+
+
+    const mySel = document.getElementById("DE-select"); 
+    mySel.addEventListener("change",function() { 
+    localStorage.setItem("selValue",this.value); 
+    window.location.assign("https://mc9xw2m4t8-hq4wwlvhx7w93y7c8.pub.sfmc-content.com/s1y0mo0frlg?DE="+ localStorage.getItem("selValue")); 
+// save it 
+        }); 
+        let val = localStorage.getItem("selValue"); 
+        console.log(val);
+    if (val) mySel.value=val; // set the dropdown 
+// trigger the change in case there are other events on the select 
+mySel.onchange();
+
+
+
+        
+ </script>
+
+
+
+
+        <table id="myTable" class="table table-striped table-bordered mydatatable" style="width : 100%" data-toggle="table" data-mobile-responsive="true" data-pagination="true" data-height="460">
+  <tr>
+   <!--When a header is clicked, run the sortTable function, with a parameter, 0 for sorting by names, 1 for sorting by country:-->  
+     <th  onclick="sortTable(0)" > Journey &nbsp;          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
+</svg> </th>
+                <th  onclick="sortTable(1)">Status &nbsp; <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
+</svg></th>
+                <th onclick="sortTable(2)">Version &nbsp; <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
+</svg></th>
+                <th onclick="sortTable(3)">Last Published &nbsp; <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
+</svg></th>
+                <th onclick="sortTable(4)">Contacts &nbsp; <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
+</svg></th>
+
+
+
+              <th>Action</th>
+  </tr>
+
+
+
+
+  
+
+%%[
+var @rows, @row, @rowCount, @i, @Journey, @j, @k, @Data
+
+set @Data = Queryparameter('DE')
+ 
+
+
+if empty(@Data) then
+
+
+set @rows = LookupRows("Newtest", "Test" , "true")
+set @rowCount = rowcount(@rows)
+
+for @i = 1 to @rowCount do
+
+   
+    set @row = row(@rows, @i) /* get row based on counter */
+    set @Journey = field(@row,"Journey")
+    set @Status = field(@row,"Status")
+    set @Version = field(@row , "Version")
+   
+    set @LastPublished = field(@row ,"LastPublished")
+    set @Contacts = field(@row , "Contacts")
+
+%%=v(@i)=%%    
+ 
+
+   ]%%   
+
+          <tr>
+          <td class="journey">%%=v(@Journey)=%%</td>
+          <td class="status" >%%=v(@Status)=%%</td>
+          <td class="version">%%=v(@Version)=%%</td>
+          <td class="last">%%=v(@LastPublished)=%%</td>
+          <td class="contacts">%%=v(@Contacts)=%%</td>
+          <td> 
+                
+                    <button type="button" onclick="toggleModal(this, %%=v(@i)=%%) "> Edit </button> 
+                    <button  onclick="removeRow(this)">Delete</button></td>
+    
+                                
+          
+          </tr>
+
+
+ %%=v(@Data)=%%
+
+
+
+
+    %%[
+next @i 
+
+
+]%%     
+
+
+
+
+        
+       
+
+%%[else 
+
+
+
+set @rows = LookupRows(@Data, "Test" , "true")
+set @rowCount = rowcount(@rows)
+
+for @i = 1 to @rowCount do
+
+   
+    set @row = row(@rows, @i) /* get row based on counter */
+    set @Journey = field(@row,"Journey")
+    set @Status = field(@row,"Status")
+    set @Version = field(@row , "Version")
+   
+    set @LastPublished = field(@row ,"LastPublished")
+    set @Contacts = field(@row , "Contacts")
+
+%%=v(@i)=%%    
+
+   ]%%   
+
+          <tr>
+          <td class="journey">%%=v(@Journey)=%%</td>
+          <td class="status" >%%=v(@Status)=%%</td>
+          <td class="version">%%=v(@Version)=%%</td>
+          <td class="last">%%=v(@LastPublished)=%%</td>
+          <td class="contacts">%%=v(@Contacts)=%%</td>
+          <td> 
+                
+                    <button type="button" onclick="toggleModal(this, %%=v(@i)=%%) "> Edit </button> 
+                    <button  onclick="removeRow(this)">Delete</button></td>
+    
+                                
+          
+          </tr>
+
+
+    %%[
+next @i 
+
+
+]%%     
+
+%%[endif]%%
+
+
+
+
+ </tbody>
+
+        <tfoot>
+            
+
+        </tfoot>
+
+</table>
+    
+
+        <table  class="table table-striped table-bordered mydatatable" style="width : 100%" data-toggle="table" data-mobile-responsive="true" data-pagination="true" data-height="460" data-width="200">
+
+                
+                     <div id="data">
+      
+                           <!--  <form id="myForm" method="post" action="https://mc9xw2m4t8-hq4wwlvhx7w93y7c8.pub.sfmc-content.com/04xsykmv0jw">-->
+
+                            <form id="myForm" method="post" action="https://mc9xw2m4t8-hq4wwlvhx7w93y7c8.pub.sfmc-content.com/04xsykmv0jw" >
+            
+
+                                 <tr>
+                                     <th><input type="text" name="journey" class="Journey"  id="Journey" placeholder="Enter Journey" width="5´"></th>
+                                     <th><input type="text" name="status" class="Status" id="Status" placeholder="Enter Status" ></th>
+                                     <th><input type="text" name="version" class="Version" id="Version" placeholder="Enter Version" required="true"></th>
+                                     <th><input type="date" name="last" class="Last" id="Last" placeholder="Enter Date"></th>
+                                     <th><input type="text" name="contacts" class="Contacts" id="Contacts" placeholder="Enter Contacts"></th>
+
+
+
+
+
+
+
+                                     
+
+                                </tr>
+
+                                 
+                    </div>
+        </table>
+
+        <div class="mb-3 col-md-12">
+                                            <div class="row">
+                                                <div class="col text-center">
+                                                    
+                                                    <button class="btn btn-secondary btn-lg" name="submitted" id="add"> Add </button>
+
+                                                    <button class="btn btn-secondary btn-lg" onclick="sortTable()">Sort</button> 
+                                                    <!--<button class="btn btn-secondary btn-lg" id="del">Clear</button> -->
+                                                </div>
+                </div>
+    </div> 
+
+ </form>
+
+</div>
+
+
+
+
+
+
+   
+
+
+       <script>
+
+let btnAdd = document.querySelector('#add');
+let table = document.querySelector('table');
+
+
+
+let JourneyInput = document.querySelector('#Journey');
+let StatusInput = document.querySelector('#Status');
+let VersionInput = document.querySelector('#Version');
+let LastInput = document.querySelector('#Last');
+let ContactsInput = document.querySelector('#Contacts');
+
+
+btnAdd.addEventListener('click', () => {
+    let Journey = JourneyInput.value;
+    let Status = StatusInput.value;
+    let Version = VersionInput.value;
+    let Last = LastInput.value;
+    let Contacts = ContactsInput.value;
+    
+
+    let template = `
+
+                <tr>
+                    
+                    <td class="journey" >${Journey}</td>
+                    <td class="status" >${Status}</td>
+                    <td class="version" >${Version}</td>
+                    <td class="last" >${Last}</td>
+                    <td class="contacts">${Contacts}</td>
+                    <td> <button onclick="toggleModal(this)" > Edit </button> &nbsp <button onclick="removeRow(this) ">Delete</button></td>
+                  
+
+                </tr>`;
+
+    table.innerHTML += template;
+   
+  
+
+  
+ 
+
+
+})  ;
+
+
+
+    </script>
+
+
+
+
+   <!-- Creating a popup modal -->
+
+
+
+<div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+
+                <h5 class="modal-title">Edit Table</h5>
+                <button type="button" class="close" onclick="closeModal()" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form id="Form" method="post" action="https://mc9xw2m4t8-hq4wwlvhx7w93y7c8.pub.sfmc-content.com/dvbfe1islul">
+
+                <div class="form-group">
+                     Journey
+                    <input type="text" name="journey"  id="journey" class="form-control">
+                </div>
+ 
+                <div class="form-group">
+                    Status
+                    <input type="text"name="status" id="status" class="form-control">
+                </div>
+ 
+                <div class="form-group">
+                    Version
+                    <input type="text"name="version" id="version" class="form-control">
+                </div>
+ 
+                <div class="form-group">
+                    Last Published
+                    <input type="text"name="last" id="last" class="form-control">
+                </div>
+
+                  <div class="form-group">
+                    Contacts
+                    <input type="text"name="contacts" id="contacts" class="form-control">
+                </div>
+                <div class="modal-footer">
+                <button  class="btn btn-primary">Save changes</button>
+                <!--<button type="button" name ="submit" class="btn btn-primary" onclick="saveInfo()">Save changes</button>-->
+                <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
+                
+                 </div>
+             </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
+
+<script type="text/javascript">
+   
+    let tableRowElement;
+    function toggleModal(element) {
+
+        tableRowElement = element.parentElement.parentElement;
+        const Journey = tableRowElement.getElementsByClassName('journey')[0].innerHTML;
+        const Status = tableRowElement.getElementsByClassName('status')[0].innerHTML;
+        const Version = tableRowElement.getElementsByClassName('version')[0].innerHTML;
+        const Last = tableRowElement.getElementsByClassName('last')[0].innerHTML;
+        const Contacts = tableRowElement.getElementsByClassName('contacts')[0].innerHTML;
+
+
+        document.getElementById('journey').value = Journey;
+        document.getElementById('status').value = Status;
+        document.getElementById('version').value = Version;
+        document.getElementById('last').value = Last;
+        document.getElementById('contacts').value = Contacts;
+
+
+        openModal();
+    }
+
+    function saveInfo() {
+        const Journey = document.getElementById('journey').value;
+        const Status = document.getElementById('status').value;
+        const Version = document.getElementById('version').value;
+        const Last = document.getElementById('last').value;
+        const Contacts = document.getElementById('contacts').value;
+
+
+        tableRowElement.getElementsByClassName('journey')[0].innerHTML=Journey;
+        tableRowElement.getElementsByClassName('status')[0].innerHTML=Status;
+        tableRowElement.getElementsByClassName('version')[0].innerHTML=Version;
+        tableRowElement.getElementsByClassName('last')[0].innerHTML=Last;
+        tableRowElement.getElementsByClassName('contacts')[0].innerHTML=Contacts;
+
+        closeModal();
+    }
+
+    function openModal() {
+        document.getElementById("backdrop").style.display = "block"
+        document.getElementById("exampleModal").style.display = "block"
+        document.getElementById("exampleModal").classList.add("show");
+    }
+
+    function closeModal() {
+        document.getElementById("backdrop").style.display = "none"
+        document.getElementById("exampleModal").style.display = "none"
+        document.getElementById("exampleModal").classList.remove("show");
+    }
+
+    function removeRow(current) {
+
+        tableRowElement = current.parentElement.parentElement;
+        const Journey = tableRowElement.getElementsByClassName('journey')[0].innerHTML;
+
+        console.log (Journey);       
+        window.location.assign("https://mc9xw2m4t8-hq4wwlvhx7w93y7c8.pub.sfmc-content.com/fcrpejdil5d?journey="+ Journey); 
+
+
+    }
+
+
+
+</script>
+</form>
+
+
+    
+
+
+
+
+
+<script>
+function sortTable(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("myTable");
+  switching = true;
+  //Set the sorting direction to ascending:
+  dir = "asc"; 
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /*check if the two rows should switch place,
+      based on the direction, asc or desc:*/
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      //Each time a switch is done, increase this count by 1:
+      switchcount ++;      
+    } else {
+      /*If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again.*/
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+</script>
+
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+
+ <footer>
+ <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2020 Copyright:
+    <a class="text-dark" href="https://persistent.com/">Persistent.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+</body>
+</html>
