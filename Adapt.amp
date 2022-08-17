@@ -233,115 +233,49 @@ mySel.onchange();
 
 
 
-  
-
-%%[
-var @rows, @row, @rowCount, @i, @Journey, @j, @k, @Data
-
-set @Data = Queryparameter('DE')
- 
-
-
-if empty(@Data) then
-
-
-set @rows = LookupRows("Newtest", "Test" , "true")
-set @rowCount = rowcount(@rows)
-
-for @i = 1 to @rowCount do
-
-   
-    set @row = row(@rows, @i) /* get row based on counter */
-    set @Journey = field(@row,"Journey")
-    set @Status = field(@row,"Status")
-    set @Version = field(@row , "Version")
-   
-    set @LastPublished = field(@row ,"LastPublished")
-    set @Contacts = field(@row , "Contacts")
-
-%%=v(@i)=%%    
- 
-
-   ]%%   
-
-          <tr>
-          <td class="journey">%%=v(@Journey)=%%</td>
-          <td class="status" >%%=v(@Status)=%%</td>
-          <td class="version">%%=v(@Version)=%%</td>
-          <td class="last">%%=v(@LastPublished)=%%</td>
-          <td class="contacts">%%=v(@Contacts)=%%</td>
-          <td> 
-                
-                    <button type="button" onclick="toggleModal(this, %%=v(@i)=%%) "> Edit </button> 
-                    <button  onclick="removeRow(this)">Delete</button></td>
-    
-                                
-          
-          </tr>
-
-
- %%=v(@Data)=%%
-
-
-
-
-    %%[
-next @i 
-
-
-]%%     
-
-
-
-
-        
+var @rows, @row, @rowcount, @i
        
+        SET @rows = LookupRows('Test_Amin', 'Active', 'true')
+       
+        SET @rowcount = rowcount(@rows)
+       
+        IF @rowcount > 0 THEN
+       
+         FOR @i = 1 to @rowcount DO
+          set @row = row(@rows, @i) 
+         /* set @businessUnit = field(@row,"businessUnit")
+          set @Process = field(@row,"Process")
+          set @permissionType = field(@row , "permissionType")
+          set @sourceCategory  = field(@row ,"sourceCategory")
+          set @source  = field(@row ,"source")
+          set @eventDefinitionKey = field(@row , "eventDefinitionKey")
+          set @include this row  = field(@row , "include this row") */
+         ]%%
 
-%%[else 
+           <tr>
+          <td>%%=v(@businessUnit)=%%</td>
+          <td>%%=v(@Process)=%%</td>
+          <td>%%=v(@permissionType)=%%</td>
+          <td>%%=v(@sourceCategory)=%%</td>
+          <td>%%=v(@source)=%%</td>
+          <td>%%=v(@eventDefinitionKey)=%%</td>
+          <td>%%=v(@include)=%%</td>
+          
+          
+          </tr>
 
-
-
-set @rows = LookupRows(@Data, "Test" , "true")
-set @rowCount = rowcount(@rows)
-
-for @i = 1 to @rowCount do
-
-   
-    set @row = row(@rows, @i) /* get row based on counter */
-    set @Journey = field(@row,"Journey")
-    set @Status = field(@row,"Status")
-    set @Version = field(@row , "Version")
-   
-    set @LastPublished = field(@row ,"LastPublished")
-    set @Contacts = field(@row , "Contacts")
-
-%%=v(@i)=%%    
-
-   ]%%   
-
-          <tr>
-          <td class="journey">%%=v(@Journey)=%%</td>
-          <td class="status" >%%=v(@Status)=%%</td>
-          <td class="version">%%=v(@Version)=%%</td>
-          <td class="last">%%=v(@LastPublished)=%%</td>
-          <td class="contacts">%%=v(@Contacts)=%%</td>
-          <td> 
-                
                     <button type="button" onclick="toggleModal(this, %%=v(@i)=%%) "> Edit </button> 
                     <button  onclick="removeRow(this)">Delete</button></td>
     
                                 
           
           </tr>
+              
+         %%[
+        NEXT @i
+        ENDIF ]%%
 
 
-    %%[
-next @i 
-
-
-]%%     
-
-%%[endif]%%
 
 
 
@@ -367,17 +301,12 @@ next @i
             
 
                                  <tr>
-                                     <th><input type="text" name="journey" class="Journey"  id="Journey" placeholder="Enter Journey" width="5´"></th>
-                                     <th><input type="text" name="status" class="Status" id="Status" placeholder="Enter Status" ></th>
-                                     <th><input type="text" name="version" class="Version" id="Version" placeholder="Enter Version" required="true"></th>
-                                     <th><input type="date" name="last" class="Last" id="Last" placeholder="Enter Date"></th>
-                                     <th><input type="text" name="contacts" class="Contacts" id="Contacts" placeholder="Enter Contacts"></th>
-
-
-
-
-
-
+                                     <th><input type="text" name="BusinessUnit" id="BusinessUnit" placeholder="Enter BusinessUnit" size="23"></th>
+                                     <th><input type="text" name="Process" id="Process" placeholder="Enter Process" ></th>
+                                     <th> <input type="text" name="PermissionType" id="PermissionType" placeholder="Enter PermissionType"></th>
+                                     <th><input type="text" name="SourceCategory" id="SourceCategory" placeholder="Enter SourceCategory"></th>
+                                     <th><input type="text" name="source" id="source" placeholder="Enter source"></th>
+                                     <th> <input type="text" name="eventDefinitionKey" id="source" placeholder="Enter eventDefinitionKey"></th>
 
                                      
 
