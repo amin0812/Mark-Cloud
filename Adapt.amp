@@ -189,7 +189,7 @@ if @rowCount > 0 then
     const mySel = document.getElementById("DE-select"); 
     mySel.addEventListener("change",function() { 
     localStorage.setItem("selValue",this.value); 
-    window.location.assign("https://mc9xw2m4t8-hq4wwlvhx7w93y7c8.pub.sfmc-content.com/s1y0mo0frlg?DE="+ localStorage.getItem("selValue")); 
+    window.location.assign("https://mc2xsctbllc5pw-0ck06pnh5c6g8.pub.sfmc-content.com/5t0wac5bit5?DE="+ localStorage.getItem("selValue")); 
 // save it 
         }); 
         let val = localStorage.getItem("selValue"); 
