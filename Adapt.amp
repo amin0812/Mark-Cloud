@@ -355,31 +355,33 @@ let btnAdd = document.querySelector('#add');
 let table = document.querySelector('table');
 
 
-
-let JourneyInput = document.querySelector('#Journey');
-let StatusInput = document.querySelector('#Status');
-let VersionInput = document.querySelector('#Version');
-let LastInput = document.querySelector('#Last');
-let ContactsInput = document.querySelector('#Contacts');
+let BusinessUnit = document.querySelector('#BusinessUnit');
+let Process = document.querySelector('#Process');
+let PermissionType = document.querySelector('#PermissionType');
+let SourceCategory = document.querySelector('#SourceCategory');
+let source = document.querySelector('#source');
+let source = document.querySelector('#eventDefinitionKey');
 
 
 btnAdd.addEventListener('click', () => {
-    let Journey = JourneyInput.value;
-    let Status = StatusInput.value;
-    let Version = VersionInput.value;
-    let Last = LastInput.value;
-    let Contacts = ContactsInput.value;
+    let BusinessUnit = BusinessUnitInput.value;
+    let Process = ProcessInput.value;
+    let PermissionType = PermissionTypeInput.value;
+    let SourceCategory = SourceCategory.value;
+    let source =sourceInput.value;
+    let eventDefinitionKey = eventDefinitionKeyInput.value;
+    
     
 
     let template = `
 
                 <tr>
-                    
-                    <td class="journey" >${Journey}</td>
-                    <td class="status" >${Status}</td>
-                    <td class="version" >${Version}</td>
-                    <td class="last" >${Last}</td>
-                    <td class="contacts">${Contacts}</td>
+                    <td>${BusinessUnit}</td>
+                    <td>${Process}</td>
+                    <td>${PermissionType}</td>
+                    <td>${SourceCategory}</td>
+                    <td>${source}</td>
+                    <td>${eventDefinitionKey}</td>
                     <td> <button onclick="toggleModal(this)" > Edit </button> &nbsp <button onclick="removeRow(this) ">Delete</button></td>
                   
 
@@ -419,7 +421,7 @@ btnAdd.addEventListener('click', () => {
             </div>
 
             <div class="modal-body">
-                <form id="Form" method="post" action="https://mc9xw2m4t8-hq4wwlvhx7w93y7c8.pub.sfmc-content.com/dvbfe1islul">
+                <form id="Form" method="post" action="https://mc2xsctbllc5pw-0ck06pnh5c6g8.pub.sfmc-content.com/5t0wac5bit5">
 
                 <div class="form-group">
                      Journey
