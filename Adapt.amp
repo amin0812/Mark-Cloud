@@ -282,7 +282,6 @@ var @rows, @row, @rowcount, @i
 
 
  </tbody>
-
         <tfoot>
              <table  class="table table-striped table-bordered mydatatable" style="width : 100%" data-toggle="table" data-mobile-responsive="true" data-pagination="true" data-height="460" data-width="200">
 
@@ -334,7 +333,8 @@ var @rows, @row, @rowcount, @i
 
 
  %%[
-   
+
+SET @Success = RequestParameter("Success")  
 Set @BusinessUnit = RequestParameter("BusinessUnit")
 Set @Process = RequestParameter("Process")
 Set @PermissionType = RequestParameter("PermissionType")
@@ -344,7 +344,9 @@ Set @eventDefinitionKey = RequestParameter("eventDefinitionKey")
 Set @includeThisRow = RequestParameter("includeThisRow")
 
 
-InsertDE('Test_Amin','businessUnit', @BusinessUnit, 'Process', @Process, 'permissionType',@PermissionType, 'sourceCategory', @SourceCategory, 'source' , @source , 'eventDefinitionKey' , @eventDefinitionKey, 'include this row', @includeThisRow  )
+IF @Success != 1 THEN
+        InsertDE('Test_Amin','businessUnit', @BusinessUnit, 'Process', @Process, 'permissionType',@PermissionType, 'sourceCategory', @SourceCategory, 'source' , @source , 'eventDefinitionKey' , @eventDefinitionKey, 'include this row', @includeThisRow  )
+ENDIF
 
 ]%%
 
