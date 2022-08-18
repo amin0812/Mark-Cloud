@@ -294,12 +294,12 @@ var @rows, @row, @rowcount, @i
             
 
                                  <tr>
-                                     <th><input type="text" name="BusinessUnit" id="BusinessUnit" placeholder="Enter BusinessUnit" ></th>
-                                     <th><input type="text" name="Process" id="Process" placeholder="Enter Process" ></th>
-                                     <th> <input type="text" name="PermissionType" id="PermissionType" placeholder="Enter PermissionType"></th>
-                                     <th><input type="text" name="SourceCategory" id="SourceCategory" placeholder="Enter SourceCategory"></th>
-                                     <th><input type="text" name="source" id="source" placeholder="Enter source"></th>
-                                     <th> <input type="text" name="eventDefinitionKey" id="source" placeholder="Enter eventDefinitionKey"></th>
+                                     <td><input type="text" name="BusinessUnit" id="BusinessUnit" placeholder="Enter BusinessUnit" ></td>
+                                     <td><input type="text" name="Process" id="Process" placeholder="Enter Process" ></td>
+                                     <td> <input type="text" name="PermissionType" id="PermissionType" placeholder="Enter PermissionType"></td>
+                                     <td><input type="text" name="SourceCategory" id="SourceCategory" placeholder="Enter SourceCategory"></td>
+                                     <td><input type="text" name="source" id="source" placeholder="Enter source"></td>
+                                     <td> <input type="text" name="eventDefinitionKey" id="source" placeholder="Enter eventDefinitionKey"></td>
 
                                      
 
