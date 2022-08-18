@@ -305,25 +305,7 @@ var @rows, @row, @rowcount, @i
 
                                 </tr>
 
-                                %%[
 
-SET @Success = RequestParameter("submitted")  
-Set @BusinessUnit = RequestParameter("BusinessUnit")
-Set @Process = RequestParameter("Process")
-Set @PermissionType = RequestParameter("PermissionType")
-Set @SourceCategory = RequestParameter("SourceCategory")
-Set @source = RequestParameter("source")
-Set @eventDefinitionKey = RequestParameter("eventDefinitionKey")
-Set @includeThisRow = RequestParameter("includeThisRow")
-
-
-    
-
-]%%
-
-%%[IF @Success == 1 THEN
-        InsertDE('Test_Amin','businessUnit', @BusinessUnit, 'Process', @Process, 'permissionType',@PermissionType, 'sourceCategory', @SourceCategory, 'source' , @source , 'eventDefinitionKey' , @eventDefinitionKey, 'include this row', @includeThisRow  )
-    ENDIF]%%
 
 
 
@@ -352,6 +334,28 @@ Set @includeThisRow = RequestParameter("includeThisRow")
  </form>
 
 </div>
+
+
+
+%%[
+
+SET @Success = RequestParameter("submitted")  
+Set @BusinessUnit = RequestParameter("BusinessUnit")
+Set @Process = RequestParameter("Process")
+Set @PermissionType = RequestParameter("PermissionType")
+Set @SourceCategory = RequestParameter("SourceCategory")
+Set @source = RequestParameter("source")
+Set @eventDefinitionKey = RequestParameter("eventDefinitionKey")
+Set @includeThisRow = RequestParameter("includeThisRow")
+
+
+    
+
+]%%
+
+%%[IF @Success == 1 THEN
+        InsertDE('Test_Amin','businessUnit', @BusinessUnit, 'Process', @Process, 'permissionType',@PermissionType, 'sourceCategory', @SourceCategory, 'source' , @source , 'eventDefinitionKey' , @eventDefinitionKey, 'include this row', @includeThisRow  )
+    ENDIF]%%
 
 
  
