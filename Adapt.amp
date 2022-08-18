@@ -282,11 +282,7 @@ var @rows, @row, @rowcount, @i
 
 
  </tbody>
-        <tfoot>
-             <table  class="table table-striped table-bordered mydatatable" style="width : 100%" data-toggle="table" data-mobile-responsive="true" data-pagination="true" data-height="460" data-width="200">
-
-                
-                     <div id="data">
+                         <div id="data">
       
                            <!--  <form id="myForm" method="post" action="https://mc9xw2m4t8-hq4wwlvhx7w93y7c8.pub.sfmc-content.com/04xsykmv0jw">-->
 
@@ -294,12 +290,12 @@ var @rows, @row, @rowcount, @i
             
 
                                  <tr>
-                                     <th><input type="text" name="BusinessUnit" id="BusinessUnit" placeholder="Enter BusinessUnit" ></th>
-                                     <th><input type="text" name="Process" id="Process" placeholder="Enter Process" ></th>
-                                     <th> <input type="text" name="PermissionType" id="PermissionType" placeholder="Enter PermissionType"></th>
-                                     <th><input type="text" name="SourceCategory" id="SourceCategory" placeholder="Enter SourceCategory"></th>
-                                     <th><input type="text" name="source" id="source" placeholder="Enter source"></th>
-                                     <th> <input type="text" name="eventDefinitionKey" id="source" placeholder="Enter eventDefinitionKey"></th>
+                                     <td><input type="text" name="BusinessUnit" id="BusinessUnit" placeholder="Enter BusinessUnit" ></td>
+                                     <td><input type="text" name="Process" id="Process" placeholder="Enter Process" ></td>
+                                     <td> <input type="text" name="PermissionType" id="PermissionType" placeholder="Enter PermissionType"></td>
+                                     <td><input type="text" name="SourceCategory" id="SourceCategory" placeholder="Enter SourceCategory"></td>
+                                     <td><input type="text" name="source" id="source" placeholder="Enter source"></td>
+                                     <td> <input type="text" name="eventDefinitionKey" id="source" placeholder="Enter eventDefinitionKey"></td>
 
                                      
 
@@ -311,9 +307,7 @@ var @rows, @row, @rowcount, @i
 
                                  
                     </div>
-        </table>
-
-        </tfoot>
+       
 
 </table>
     
