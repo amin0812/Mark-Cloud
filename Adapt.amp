@@ -353,7 +353,7 @@ Set @includeThisRow = RequestParameter("includeThisRow")
 
 ]%%
 
-%%[IF @Success == 1 THEN
+%%[IF NOT EMPTY (@BusinessUnit)  THEN
         InsertDE('Test_Amin','businessUnit', @BusinessUnit, 'Process', @Process, 'permissionType',@PermissionType, 'sourceCategory', @SourceCategory, 'source' , @source , 'eventDefinitionKey' , @eventDefinitionKey, 'include this row', @includeThisRow  )
     ENDIF]%%
 
