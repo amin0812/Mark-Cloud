@@ -141,30 +141,21 @@ th, td {
 
 %%[
 var @rows, @row, @rowCount, @i, @Name
-
 set @rows = LookupRows("DE_Names_Test","test", "1")
 set @rowCount = rowcount(@rows)
 
-
 if @rowCount > 0 then
-
     for @i = 1 to @rowCount do
-
         set @row = row(@rows,@i) 
-        set @Name = field(@row,"Name") 
-
-
-    ]%%
-
-
-               
+        set @Name = field(@row,"Name")
+]%%
                     <option >%%=v(@Name)=%%</option>
+   
 
-    %%[
+   %%[ next @i
+       endif ]%%
 
-  next @i ]%%
 
-%%[endif]%%
 
         </select>
         
@@ -252,13 +243,13 @@ var @rows, @row, @rowcount, @i
        
          FOR @i = 1 to @rowcount DO
           set @row = row(@rows, @i) 
-         /* set @businessUnit = field(@row,"businessUnit")
+          set @businessUnit = field(@row,"businessUnit")
           set @Process = field(@row,"Process")
           set @permissionType = field(@row , "permissionType")
           set @sourceCategory  = field(@row ,"sourceCategory")
-          set @source  = field(@row ,"source")
+          set @source = field(@row ,"source")
           set @eventDefinitionKey = field(@row , "eventDefinitionKey")
-          set @include this row  = field(@row , "include this row") */
+          set @include = field(@row , "include this row")
          ]%%
 
            <tr>
@@ -299,32 +290,7 @@ var @rows, @row, @rowcount, @i
 </table>
     
 
-        <table  class="table table-striped table-bordered mydatatable" style="width : 100%" data-toggle="table" data-mobile-responsive="true" data-pagination="true" data-height="460" data-width="200">
-
-                
-                     <div id="data">
-      
-                           <!--  <form id="myForm" method="post" action="https://mc9xw2m4t8-hq4wwlvhx7w93y7c8.pub.sfmc-content.com/04xsykmv0jw">-->
-
-                            <form id="myForm" method="post" action="https://mc2xsctbllc5pw-0ck06pnh5c6g8.pub.sfmc-content.com/5t0wac5bit5" >
-            
-
-                                 <tr>
-                                     <th><input type="text" name="BusinessUnit" id="BusinessUnit" placeholder="Enter BusinessUnit" size="23"></th>
-                                     <th><input type="text" name="Process" id="Process" placeholder="Enter Process" ></th>
-                                     <th> <input type="text" name="PermissionType" id="PermissionType" placeholder="Enter PermissionType"></th>
-                                     <th><input type="text" name="SourceCategory" id="SourceCategory" placeholder="Enter SourceCategory"></th>
-                                     <th><input type="text" name="source" id="source" placeholder="Enter source"></th>
-                                     <th> <input type="text" name="eventDefinitionKey" id="source" placeholder="Enter eventDefinitionKey"></th>
-
-                                     
-
-                                </tr>
-
-                                 
-                    </div>
-        </table>
-
+       
         <div class="mb-3 col-md-12">
                                             <div class="row">
                                                 <div class="col text-center">
@@ -614,6 +580,34 @@ function myFunction() {
   }
 }
 </script>
+
+
+ <table  class="table table-striped table-bordered mydatatable" style="width : 100%" data-toggle="table" data-mobile-responsive="true" data-pagination="true" data-height="460" data-width="200">
+
+                
+                     <div id="data">
+      
+                           <!--  <form id="myForm" method="post" action="https://mc9xw2m4t8-hq4wwlvhx7w93y7c8.pub.sfmc-content.com/04xsykmv0jw">-->
+
+                            <form id="myForm" method="post" action="https://mc2xsctbllc5pw-0ck06pnh5c6g8.pub.sfmc-content.com/5t0wac5bit5" >
+            
+
+                                 <tr>
+                                     <th><input type="text" name="BusinessUnit" id="BusinessUnit" placeholder="Enter BusinessUnit" size="23"></th>
+                                     <th><input type="text" name="Process" id="Process" placeholder="Enter Process" ></th>
+                                     <th> <input type="text" name="PermissionType" id="PermissionType" placeholder="Enter PermissionType"></th>
+                                     <th><input type="text" name="SourceCategory" id="SourceCategory" placeholder="Enter SourceCategory"></th>
+                                     <th><input type="text" name="source" id="source" placeholder="Enter source"></th>
+                                     <th> <input type="text" name="eventDefinitionKey" id="source" placeholder="Enter eventDefinitionKey"></th>
+
+                                     
+
+                                </tr>
+
+                                 
+                    </div>
+        </table>
+
 
  <footer>
  <!-- Copyright -->
