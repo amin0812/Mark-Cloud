@@ -262,7 +262,7 @@ var @rows, @row, @rowcount, @i
           <td>%%=v(@include)=%%</td>
           
           
-          </tr>
+          <td>
 
                     <button type="button" onclick="toggleModal(this, %%=v(@i)=%%) "> Edit </button> 
                     <button  onclick="removeRow(this)">Delete</button></td>
