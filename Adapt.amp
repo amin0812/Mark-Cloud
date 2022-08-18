@@ -117,7 +117,7 @@ th, td {
   <div class="container-fluid">
         <img src="persistent.jpeg" width="40" height="40" class="d-inline-block align-top rounded circle" alt="">
     <a class="navbar-brand" href="#">
-      Persistent Systems
+      Fluent cx
     </a>
   </div>
 </nav>
@@ -373,8 +373,8 @@ Set @includeThisRow = RequestParameter("includeThisRow")
  <footer>
  <!-- Copyright -->
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    © 2020 Copyright:
-    <a class="text-dark" href="https://persistent.com/">Persistent.com</a>
+    © 2022 Copyright:
+    <a class="text-dark" href="https://fluentcx.com/">Fluentcx.com</a>
   </div>
   <!-- Copyright -->
 </footer>
