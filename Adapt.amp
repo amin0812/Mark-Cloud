@@ -334,7 +334,7 @@ var @rows, @row, @rowcount, @i
 
  %%[
 
-SET @Success = RequestParameter("Success")  
+SET @Success = RequestParameter("submitted")  
 Set @BusinessUnit = RequestParameter("BusinessUnit")
 Set @Process = RequestParameter("Process")
 Set @PermissionType = RequestParameter("PermissionType")
