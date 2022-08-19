@@ -137,27 +137,6 @@ th, td {
         <option value="">--Please choose a Data Extension--</option>
 
 
-        <script type="text/javascript">
-
-
-    const mySel = document.getElementById("DE-select"); 
-    mySel.addEventListener("change",function() { 
-    localStorage.setItem("selValue",this.value); 
-    window.location.assign("https://mc2xsctbllc5pw-0ck06pnh5c6g8.pub.sfmc-content.com/5t0wac5bit5?DE="+ localStorage.getItem("selValue")); 
-// save it 
-        }); 
-        let val = localStorage.getItem("selValue"); 
-        console.log(val);
-    if (val) mySel.value=val; // set the dropdown 
-// trigger the change in case there are other events on the select 
-mySel.onchange();
-
-
-
-        
- </script>
-
-
 
 %%[
 var @rows, @row, @rowCount, @i, @Name
@@ -196,7 +175,25 @@ if @rowCount > 0 then
             update();
             </script>
 
+<script type="text/javascript">
 
+
+    const mySel = document.getElementById("DE-select"); 
+    mySel.addEventListener("change",function() { 
+    localStorage.setItem("selValue",this.value); 
+    window.location.assign("https://mc2xsctbllc5pw-0ck06pnh5c6g8.pub.sfmc-content.com/5t0wac5bit5?DE="+ localStorage.getItem("selValue")); 
+// save it 
+        }); 
+        let val = localStorage.getItem("selValue"); 
+        console.log(val);
+    if (val) mySel.value=val; // set the dropdown 
+// trigger the change in case there are other events on the select 
+mySel.onchange();
+
+
+
+        
+ </script>
 
 
 
