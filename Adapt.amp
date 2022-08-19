@@ -478,6 +478,16 @@ Set @includeThisRow = RequestParameter("includeThisRow")
         document.getElementById("exampleModal").classList.remove("show");
     }
 
+  function removeRow(current) {
+
+        tableRowElement = current.parentElement.parentElement;
+        const Journey = tableRowElement.getElementsByClassName('journey')[0].innerHTML;
+
+        console.log (Journey);       
+        window.location.assign("https://mc9xw2m4t8-hq4wwlvhx7w93y7c8.pub.sfmc-content.com/fcrpejdil5d?journey="+ Journey); 
+
+
+    }
 
 
    
