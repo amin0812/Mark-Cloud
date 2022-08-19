@@ -238,7 +238,8 @@ Variable.SetValue("@DEname", val);
 %%[
 
 SET @DEname = RequestParameter("DE")
-    
+
+IF @DEname == "First_De" THEN
 
 var @rows, @row, @rowcount, @i
        
@@ -280,7 +281,8 @@ var @rows, @row, @rowcount, @i
               
          %%[
         NEXT @i
-        ENDIF ]%%
+        ENDIF 
+        ENDIF]%%
 
 
 
