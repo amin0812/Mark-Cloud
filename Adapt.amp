@@ -122,8 +122,9 @@ th, td {text-align: left;
 <div class="container">
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Journey.." title="Type in a name">
     <label for="DE-select">Data Extension</label>
-    <select name="pets" id="DE-select" onChange="update()">
+     <select name="pets" id="DE-select" onChange="update()">
     <option value="">--Please choose a Data Extension--</option>
+
 %%[
 var @rows, @row, @rowCount, @i, @Name
 set @rows = LookupRows("DE_Names_Test","test", "1")
@@ -132,10 +133,13 @@ set @rowCount = rowcount(@rows)
 if @rowCount > 0 then
     for @i = 1 to @rowCount do
         set @row = row(@rows,@i) 
-        set @Name = field(@row,"Name")]%%
-        <option >%%=v(@Name)=%%</option>
-%%[ next @i
-endif ]%%
+        set @Name = field(@row,"Name")
+]%%
+                    <option >%%=v(@Name)=%%</option>
+   
+
+   %%[ next @i
+       endif ]%%
 
 
 
