@@ -237,6 +237,9 @@ Variable.SetValue("@DEname", val);
 
 %%[
 
+SET @DEname = RequestParameter("DE")
+
+IF @DEname == "First_De" then
     
 
 var @rows, @row, @rowcount, @i
@@ -279,7 +282,8 @@ var @rows, @row, @rowcount, @i
               
          %%[
         NEXT @i
-        ENDIF ]%%
+        ENDIF 
+        ENDIF]%%
 
 
 
@@ -344,7 +348,7 @@ var @rows, @row, @rowcount, @i
 
 %%[
 
-SET @DEname = RequestParameter("DE") 
+ 
 SET @Success = RequestParameter("submitted")  
 Set @BusinessUnit = RequestParameter("BusinessUnit")
 Set @Process = RequestParameter("Process")
@@ -365,9 +369,6 @@ Set @includeThisRow = RequestParameter("includeThisRow")
 
 
 
-
-<p>hedha l esm  %%=v(@DEname)=%%,</p>
-<p> hey </p>
 
 
    
