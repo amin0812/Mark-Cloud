@@ -95,22 +95,14 @@ HTTPHeader.SetValue("Access-Control-Allow-Origin","*");
   border: 1px solid #ddd;
   margin-bottom: 12px;
 }
-
 table {
   border-spacing: 0;
   width: 100%;
   border: 1px solid #ddd;
 }
-
-th {
-  cursor: pointer;
-}
-
-th, td {
-  text-align: left;
-  padding: 16px;
-}
-
+th {cursor: pointer;}
+th, td {text-align: left;
+        padding: 16px;}
 </style>
 
 <nav class="navbar navbar-light bg-light pt-3 pb-3">
@@ -127,17 +119,11 @@ th, td {
 
 
 
-    <div class="container">
-          <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Journey.." title="Type in a name">
-
-
-
+<div class="container">
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Journey.." title="Type in a name">
     <label for="DE-select">Data Extension</label>
-     <select name="pets" id="DE-select" onChange="update()">
-        <option value="">--Please choose a Data Extension--</option>
-
-
-
+    <select name="pets" id="DE-select" onChange="update()">
+    <option value="">--Please choose a Data Extension--</option>
 %%[
 var @rows, @row, @rowCount, @i, @Name
 set @rows = LookupRows("DE_Names_Test","test", "1")
@@ -146,13 +132,10 @@ set @rowCount = rowcount(@rows)
 if @rowCount > 0 then
     for @i = 1 to @rowCount do
         set @row = row(@rows,@i) 
-        set @Name = field(@row,"Name")
-]%%
-                    <option >%%=v(@Name)=%%</option>
-   
-
-   %%[ next @i
-       endif ]%%
+        set @Name = field(@row,"Name")]%%
+        <option >%%=v(@Name)=%%</option>
+%%[ next @i
+endif ]%%
 
 
 
@@ -283,7 +266,7 @@ var @rows, @row, @rowcount, @i
          %%[
         NEXT @i
         ENDIF 
-        ENDIF]%%
+        ENDIFs]%%
 
 
 
