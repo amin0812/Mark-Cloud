@@ -190,6 +190,8 @@ if @rowCount > 0 then
 // trigger the change in case there are other events on the select 
 mySel.onchange();
 
+Variable.SetValue("@DEname", localStorage.getItem("selValue"));
+
 
 
         
@@ -233,6 +235,9 @@ mySel.onchange();
 
 
 %%[
+
+v(@DEname)
+    
 
 var @rows, @row, @rowcount, @i
        
