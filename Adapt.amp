@@ -362,9 +362,9 @@ Set @includeThisRow = RequestParameter("includeThisRow")
     ENDIF]%%
 
 
- %%=v(@DEname)=%%
 
 
+<p>hedha l esm  %%=v(@DEname)=%%,</p>
 
 
    
