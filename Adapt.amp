@@ -236,7 +236,6 @@ Variable.SetValue("@DEname", localStorage.getItem("selValue"));
 
 %%[
 
-v(@DEname)
     
 
 var @rows, @row, @rowcount, @i
@@ -363,7 +362,8 @@ Set @includeThisRow = RequestParameter("includeThisRow")
     ENDIF]%%
 
 
- 
+ %%=v(@DEname)=%%
+
 
 
 
