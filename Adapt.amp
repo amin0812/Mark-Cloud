@@ -238,8 +238,6 @@ Variable.SetValue("@DEname", val);
 %%[
 
 SET @DEname = RequestParameter("DE")
-
-IF @DEname == "First_De" then
     
 
 var @rows, @row, @rowcount, @i
@@ -282,8 +280,7 @@ var @rows, @row, @rowcount, @i
               
          %%[
         NEXT @i
-        ENDIF 
-        ENDIF]%%
+        ENDIF ]%%
 
 
 
@@ -369,119 +366,6 @@ Set @includeThisRow = RequestParameter("includeThisRow")
 
 
 
-
-
-
-
-
-   <!-- Creating a popup modal -->
-
-
-
-<div class="modal" tabindex="-1" role="dialog" id="exampleModal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-
-
-                <h5 class="modal-title">Edit Table</h5>
-                <button type="button" class="close" onclick="closeModal()" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <div class="modal-body">
-                <form id="Form" method="post" action="https://mc9xw2m4t8-hq4wwlvhx7w93y7c8.pub.sfmc-content.com/dvbfe1islul">
-
-                <div class="form-group">
-                     Journey
-                    <input type="text" name="journey"  id="journey" class="form-control">
-                </div>
- 
-                <div class="form-group">
-                    Status
-                    <input type="text"name="status" id="status" class="form-control">
-                </div>
- 
-                <div class="form-group">
-                    Version
-                    <input type="text"name="version" id="version" class="form-control">
-                </div>
- 
-                <div class="form-group">
-                    Last Published
-                    <input type="text"name="last" id="last" class="form-control">
-                </div>
-
-                  <div class="form-group">
-                    Contacts
-                    <input type="text"name="contacts" id="contacts" class="form-control">
-                </div>
-                <div class="modal-footer">
-                <button  class="btn btn-primary">Save changes</button>
-                <!--<button type="button" name ="submit" class="btn btn-primary" onclick="saveInfo()">Save changes</button>-->
-                <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
-                
-                 </div>
-             </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
-
-<script type="text/javascript">
-   
-    let tableRowElement;
-    function toggleModal(element) {
-
-        tableRowElement = element.parentElement.parentElement;
-        const Journey = tableRowElement.getElementsByClassName('journey')[0].innerHTML;
-        const Status = tableRowElement.getElementsByClassName('status')[0].innerHTML;
-        const Version = tableRowElement.getElementsByClassName('version')[0].innerHTML;
-        const Last = tableRowElement.getElementsByClassName('last')[0].innerHTML;
-        const Contacts = tableRowElement.getElementsByClassName('contacts')[0].innerHTML;
-
-
-        document.getElementById('journey').value = Journey;
-        document.getElementById('status').value = Status;
-        document.getElementById('version').value = Version;
-        document.getElementById('last').value = Last;
-        document.getElementById('contacts').value = Contacts;
-
-
-        openModal();
-    }
-
-    function saveInfo() {
-        const Journey = document.getElementById('journey').value;
-        const Status = document.getElementById('status').value;
-        const Version = document.getElementById('version').value;
-        const Last = document.getElementById('last').value;
-        const Contacts = document.getElementById('contacts').value;
-
-
-        tableRowElement.getElementsByClassName('journey')[0].innerHTML=Journey;
-        tableRowElement.getElementsByClassName('status')[0].innerHTML=Status;
-        tableRowElement.getElementsByClassName('version')[0].innerHTML=Version;
-        tableRowElement.getElementsByClassName('last')[0].innerHTML=Last;
-        tableRowElement.getElementsByClassName('contacts')[0].innerHTML=Contacts;
-
-        closeModal();
-    }
-
-    function openModal() {
-        document.getElementById("backdrop").style.display = "block"
-        document.getElementById("exampleModal").style.display = "block"
-        document.getElementById("exampleModal").classList.add("show");
-    }
-
-    function closeModal() {
-        document.getElementById("backdrop").style.display = "none"
-        document.getElementById("exampleModal").style.display = "none"
-        document.getElementById("exampleModal").classList.remove("show");
-    }
 
 
    
