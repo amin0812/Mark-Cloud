@@ -344,7 +344,7 @@ var @rows, @row, @rowcount, @i
 
 %%[
 
-SET @DEname = RequestParameter("pets") 
+SET @DEname = RequestParameter("DE") 
 SET @Success = RequestParameter("submitted")  
 Set @BusinessUnit = RequestParameter("BusinessUnit")
 Set @Process = RequestParameter("Process")
