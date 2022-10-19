@@ -6,8 +6,8 @@
     	/***************************/
     	/****** Define values ******/
     	/***************************/
-        var myEmailAddress = "spiegel@fluentcx.com";
-        var myTriggeredSendDefinition = '207210';
+        var myEmailAddress = "stefan_b@persistent.com";
+        var myTriggeredSendDefinition = '35214';
         var myTriggeredSend = false;
         
     	/***************************/
