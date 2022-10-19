@@ -7,7 +7,7 @@
     	/****** Define values ******/
     	/***************************/
         var myEmailAddress = "stefan_b@persistent.com";
-        var myTriggeredSendDefinition = '35214';
+        var myTriggeredSendDefinition = '207210';
         var myTriggeredSend = false;
         
     	/***************************/
