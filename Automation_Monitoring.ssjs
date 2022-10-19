@@ -27,7 +27,18 @@
             Value: dataExtensionName
         });
 
-     
+        var customerKey = req.Results[0].CustomerKey;
+
+        var result = api.retrieve(
+            "DataExtensionObject[" + customerKey + "]", 
+            ["External_Key", "Name","PLACEHOLDER"]
+        );
+
+        Write(Stringify(result.Results[0]));
+
+        var length = result.Results.length; 
+
+        
         
     } catch(error) {
         Write(Stringify(error));
