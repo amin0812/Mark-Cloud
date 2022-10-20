@@ -139,8 +139,18 @@
             /*Triggered Send*/
             var data = {
                 subscriber : {
-                    EmailAddress: myEmailAddress,
-                    SubscriberKey: myEmailAddress
+                    EmailAddress: 'vtb.nl_admin@spiegel.de' ,
+                    SubscriberKey: 'vtb.nl_admin@spiegel.de'
+                }
+            }
+            
+            var TSD = TriggeredSend.Init(myTriggeredSendDefinition);
+            var Status = TSD.Send(data.subscriber,data.attributes);
+
+        var data = {
+                subscriber : {
+                    EmailAddress: 'spiegel@fluentcx.com',
+                    SubscriberKey: 'spiegel@fluentcx.com'
                 }
             }
             
